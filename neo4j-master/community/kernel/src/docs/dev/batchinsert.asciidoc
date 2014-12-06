@@ -1,0 +1,59 @@
+[[batchinsert]]
+Batch Insertion
+===============
+
+Neo4j has a batch insertion facility intended for initial imports, which bypasses transactions and other checks in favor of performance.
+This is useful when you have a big dataset that needs to be loaded once.
+
+Batch insertion is included in the http://search.maven.org/#search|ga|1|neo4j-kernel[neo4j-kernel] component, which is part of all Neo4j distributions and editions.
+
+Be aware of the following points when using batch insertion:
+
+* The intended use is for initial import of data.
+* Batch insertion is _not thread safe._
+* Batch insertion is _non-transactional._
+* Batch insertion will re-populate all existing indexes and indexes created during batch insertion
+  on shutdown.
+* Unless +shutdown+ is successfully invoked at the end of the import, the database files _will_ be corrupt.
+
+[WARNING]
+Always perform batch insertion in a _single thread_ (or use synchronization to make only one thread at a time access the batch inserter) and invoke +shutdown+ when finished.
+
+[[batchinsert-examples]]
+== Batch Inserter Examples ==
+
+Creating a batch inserter is similar to how you normally create data in the database, but in this case the low-level link:javadocs/org/neo4j/unsafe/batchinsert/BatchInserter.html[+BatchInserter+] interface is used.
+As we have already pointed out, you can't have multiple threads using the batch inserter concurrently without external synchronization.
+
+[TIP]
+The source code of the examples is found here:
+https://github.com/neo4j/neo4j/blob/{neo4j-git-tag}/community/kernel/src/test/java/examples/BatchInsertDocTest.java[BatchInsertDocTest.java]
+
+To get hold of a +BatchInserter+, use link:javadocs/org/neo4j/unsafe/batchinsert/BatchInserters.html[+BatchInserters+] and then go from there:
+
+[snippet,java]
+----
+component=neo4j-kernel
+source=examples/BatchInsertDocTest.java
+tag=insert
+----
+
+The BatchInserter can take configuration settings, if need be.
+Read <<configuration-batchinsert>> for information on what configations are available and what they do.
+This is how to start a batch inserter with configuration options:
+
+[snippet,java]
+----
+component=neo4j-kernel
+source=examples/BatchInsertDocTest.java
+tag=configuredInsert
+----
+
+In case you have stored the configuration in a file, you can load it like this:
+
+[snippet,java]
+----
+component=neo4j-kernel
+source=examples/BatchInsertDocTest.java
+tag=configFileInsert
+----

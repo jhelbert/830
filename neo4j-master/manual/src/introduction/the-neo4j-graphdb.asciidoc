@@ -1,0 +1,283 @@
+[[graphdb-neo4j]]
+The Neo4j Graph Database
+========================
+
+This chapter goes into more detail on the data model and behavior of Neo4j.
+
+[[graphdb-neo4j-nodes]]
+== Nodes ==
+
+The fundamental units that form a graph are nodes and relationships.
+In Neo4j, both nodes and relationships can contain <<graphdb-neo4j-properties,properties>>.
+
+Nodes are often used to represent _entities,_ but depending on the domain relationships may be used for that purpose as well.
+
+Apart from properties and relationships, nodes can also be <<graphdb-neo4j-labels,labeled>> with zero or more labels.
+
+["dot", "graphdb-nodes-overview.svg", "meta"]
+----
+"A Node" [fillcolor="NODEHIGHLIGHT"]
+"A Node" -> "Relationships" [label="can have"]
+"A Node" -> "Properties" [label="can have"]
+"A Node" -> "Labels" [label="can have"]
+"Relationships" -> "Properties" [label="can have"]
+----
+
+Let's start out with a really simple graph, containing only a single node with one property:
+
+["dot", "graphdb-nodes.svg"]
+----
+"name: Peter"
+----
+
+
+[[graphdb-neo4j-relationships]]
+== Relationships ==
+
+Relationships between nodes are a key part of a graph database.
+They allow for finding related data.
+Just like nodes, relationships can have <<graphdb-neo4j-properties,properties>>.
+
+["dot", "graphdb-rels-overview.svg", "meta"]
+----
+"A Relationship" [fillcolor="NODEHIGHLIGHT"]
+"A Relationship" -> "Start node" [label="has a"]
+"A Relationship" -> "End node" [label="has a"]
+"A Relationship" -> "Relationship type" [label="has a"]
+"A Relationship" -> "Properties" [label="can have"]
+"Relationship type" -> Name [label="uniquely identified by"]
+----
+
+A relationship connects two nodes, and is guaranteed to have valid start and end nodes.
+
+["dot", "graphdb-rels.svg"]
+----
+graph [rankdir="LR"]
+"Start node" -> "End node" [label="relationship"]
+----
+
+As relationships are always directed, they can be viewed as outgoing or incoming relative to a node, which is useful when traversing the graph:
+
+["dot", "graphdb-rels-dir.svg"]
+----
+graph [rankdir="LR"]
+START [label=""]
+MIDDLE [label="Node" fillcolor="NODEHIGHLIGHT"]
+END [label=""]
+MIDDLE -> END [label="outgoing relationship"]
+START -> MIDDLE [label="incoming relationship"]
+----
+
+_Relationships are equally well traversed in either direction._
+This means that there is no need to add duplicate relationships in the opposite direction (with regard to traversal or performance).
+
+While relationships always have a direction, you can ignore the direction where it is not useful in your application.
+
+Note that a node can have relationships to itself as well:
+
+["dot", "graphdb-rels-loop.svg"]
+----
+"Node" -> "Node" [label="loop"]
+----
+
+To further enhance graph traversal all relationships have a relationship type.
+Note that the word _type_ might be misleading here, you could rather think of it as a _name_.
+The following example shows a simple social network with two relationship types.
+
+["dot", "graphdb-rels-twitter.svg"]
+----
+Maja -> Oscar [label="follows"]
+Oscar -> Maja [label="follows"]
+Alice -> Oscar [label="follows"]
+Oscar -> William [label="blocks" color="EDGEHIGHLIGHT" fontcolor="EDGEHIGHLIGHT"]
+----
+
+.Using relationship direction and type
+[options="header"]
+|========================================================
+| What | How
+| get who a person follows | outgoing +follows+ relationships, depth one
+| get the followers of a person | incoming +follows+ relationships, depth one
+| get who a person blocks | outgoing +blocks+ relationships, depth one
+| get who a person is blocked by | incoming +blocks+ relationships, depth one
+|========================================================
+
+
+[[graphdb-neo4j-properties]]
+== Properties ==
+
+Both nodes and relationships can have properties.
+
+Properties are key-value pairs where the key is a string.
+Property values can be either a primitive or an array of one primitive type.
+For example +String+, +int+ and +int[]+ values are valid for properties.
+
+[NOTE]
++NULL+ is not a valid property value.
+++NULL++s can instead be modeled by the absence of a key.
+
+["dot", "graphdb-properties.svg", "meta"]
+----
+"A Property" [fillcolor="NODEHIGHLIGHT"]
+"A Property" -> Key [label="has a"]
+Key -> Primitive:String [label="is a"]
+"A Property" -> Value [label="has a"]
+Value -> Primitive [label="can be a"]
+Value -> Primitive [label="can be an array of"]
+Primitive [shape="record" label="Primitive |{boolean|byte|short|int|long|float|double|char|<String>String}"]
+----
+
+[[property-value-types]]
+.Property value types
+[options="header", cols="15m,45,40"]
+|========================================================
+|Type | Description | Value range
+|boolean| | +true+/+false+
+|byte|8-bit integer | +-128+ to +127+, inclusive 
+|short|16-bit integer | +-32768+ to +32767+, inclusive
+|int| 32-bit integer | +-2147483648+ to +2147483647+, inclusive
+|long| 64-bit integer | +-9223372036854775808+ to +9223372036854775807+, inclusive
+|float| 32-bit IEEE 754 floating-point number |
+|double| 64-bit IEEE 754 floating-point number |
+|char| 16-bit unsigned integers representing Unicode characters | +u0000+ to +uffff+ (+0+ to +65535+)
+|String| sequence of Unicode characters |
+|========================================================
+
+For further details on float/double values, see http://docs.oracle.com/javase/specs/jls/se5.0/html/typesValues.html#4.2.3[Java Language Specification].
+
+[[graphdb-neo4j-labels]]
+== Labels ==
+
+A label is a named graph construct that is used to group nodes into sets; all nodes labeled with the same label belongs to the same set.
+Many database queries can work with these sets instead of the whole graph, making queries easier to write and more efficient.
+A node may be labeled with any number of labels, including none, making labels an optional addition to the graph.
+
+["dot", "graphdb-labels.svg", "meta"]
+----
+"A Label" [fillcolor="NODEHIGHLIGHT"]
+"A Label" -> "Name" [label="has a"]
+"A Label" -> "Node" [label="groups"]
+----
+
+Labels are used when defining constraints and adding indexes for properties.
+
+An example would be a label named +User+ that you label all your nodes representing users with.
+With that in place, you can ask Neo4j to perform operations only on your user nodes, such as finding all users with a given name.
+
+However, you can use labels for much more.
+For instance, since labels can be added and removed during runtime, they can be used to mark temporary states for your nodes.
+You might create an +Offline+ label for phones that are offline, a +Happy+ label for happy pets, and so on.
+
+=== Label names ===
+
+Any non-empty Unicode string can be used as a label name.
+In Cypher, you may need to use the backtick (++`++) syntax to avoid clashes with Cypher identifier rules.
+By convention, labels are written with CamelCase notation, with the first letter in upper case.
+For instance, +User+ or +CarOwner+.
+
+Labels have an id space of an int, meaning the maximum number of labels the database can contain is roughly 2 billion.
+
+[[graphdb-neo4j-paths]]
+== Paths ==
+
+A path is one or more nodes with connecting relationships, typically retrieved as a query or traversal result.
+
+["dot", "graphdb-path.svg", "meta"]
+----
+"A Path" [fillcolor="NODEHIGHLIGHT"]
+"A Path" -> "Start Node" [label="has a"]
+"A Path" -> "Relationship" [label="can contain one or more"]
+"Relationship" -> "Node" [label="accompanied by a"]
+"A Path" -> "End Node" [label="has an"]
+----
+
+The shortest possible path has length zero and looks like this:
+
+["dot", "graphdb-path-example1.svg"]
+----
+"Node"
+----
+
+A path of length one:
+
+["dot", "graphdb-path-example2.svg"]
+----
+"Node 1" -> "Node 2" [label="Relationship 1"]
+----
+
+Another path of length one:
+
+["dot", "graphdb-path-example-loop.svg"]
+----
+"Node 1" -> "Node 1" [label="Relationship 1"]
+----
+
+[[graphdb-neo4j-traversal]]
+== Traversal ==
+
+Traversing a graph means visiting its nodes, following relationships according to some rules.
+In most cases only a subgraph is visited, as you already know where in the graph the interesting nodes and relationships are found.
+
+Cypher provides a declarative way to query the graph powered by traversals and other techniques.
+See <<cypher-query-lang>> for more information.
+
+Neo4j comes with a callback based traversal API which lets you specify the traversal rules.
+At a basic level there's a choice between traversing breadth- or depth-first.
+
+For an in-depth introduction to the traversal framework, see <<tutorial-traversal>>.
+For Java code examples see <<tutorials-java-embedded-traversal>>.
+
+[[graphdb-neo4j-schema]]
+== Schema ==
+
+Neo4j is a schema-optional graph database. You can use Neo4j without any schema.  Optionally you can introduce it in
+order to gain performance or modeling benefits. This allows a way of working where the schema does not get in your way
+until you are at a stage where you want to reap the benefits of having one.
+
+[NOTE]
+Schema commands can only be applied on the master machine in a Neo4j cluster (see <<ha>>).
+If you apply them on a slave you will receive a `Neo.ClientError.Transaction.InvalidType` error code. (see <<status-codes>>)
+
+[[graphdb-neo4j-schema-indexes]]
+=== Indexes ===
+
+NOTE: This feature was introduced in Neo4j 2.0, and is not the same as the legacy indexes (see <<indexing>>).
+
+Performance is gained by creating indexes, which improve the speed of looking up nodes in the database.
+Once you’ve specified which properties to index, Neo4j will make sure your indexes are kept up to date as your graph evolves.
+Any operation that looks up nodes by the newly indexed properties will see a significant performance boost.
+
+Indexes in Neo4j are _eventually available_. That means that when you first create an index, the operation returns immediately.
+The index is *populating* in the background and so is not immediately available for querying.
+When the index has been fully populated it will eventually come *online*. That means that it is now ready to be used in
+queries.
+
+If something should go wrong with the index, it can end up in a *failed* state. When it is failed, it will not be used
+to speed up queries. To rebuild it, you can drop and recreate the index. Look at logs for clues about the failure.
+
+You can track the status of your index by asking for the index state through the API you are using.
+Note, however, that this is not yet possible through Cypher.
+
+How to use indexes in the different APIs:
+
+* Cypher: <<query-schema-index>>
+* REST API: <<rest-api-schema-indexes>>
+* Listing Indexes via Shell: <<shell-listing-indexes-and-constraints>>
+* Java Core API: <<tutorials-java-embedded-new-index>>
+
+[[graphdb-neo4j-schema-constraints]]
+=== Constraints ===
+
+NOTE: This feature was introduced in Neo4j 2.0.
+
+Neo4j can help you keep your data clean. It does so using constraints, that allow you to specify the rules for what
+your data should look like. Any changes that break these rules will be denied.
+
+In this version, unique constraints is the only available constraint type.
+
+How to use constraints in the different APIs:
+
+* Cypher: <<query-constraints>>
+* REST API: <<rest-api-schema-constraints>>
+* Listing Constraints via Shell: <<shell-listing-indexes-and-constraints>>
+

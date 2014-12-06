@@ -1,0 +1,34 @@
+2.1.6
+-----
+o Fixes bug that could lead to false positives when checking for property
+  owners
+
+2.1.5
+-----
+o Added a consistency check for duplicate property names in a given
+  node/relationship's property chain
+
+2.1.4
+-----
+o Consistency checker package is now part of the community bundle
+o Fixes incorrect reports for deleted properties
+
+2.1.2
+-----
+o Consistency checks on non-constraint indexes is significantly
+  faster
+
+1.9.M02 (2012-11-30)
+--------------------
+o Write out log file if inconsistencies are found.
+o Improved configuration for memory mapping with MOST_FREQUENTLY_USED window pool.
+o Consistency checker defaults to using the 'most frequently used' implementation when 
+  on Windows to avoid memory (un)mapping problems
+
+1.9.M01 (2012-10-23)
+--------------------
+o Initial release (extracted from backup module).
+o Added new consistency check implementation with better performance thanks to
+  better usage of mapped memory.
+o Consistency check can now accept tuning parameters to make best use of available resources.
+o New WindowPool implementation for exclusive use underneath the consistency check.

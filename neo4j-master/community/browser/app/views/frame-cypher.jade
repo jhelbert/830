@@ -1,0 +1,41 @@
+div(ng-controller="CypherResultCtrl", fullscreen)
+  .outer
+    include partials/frame-common-actions
+    .inner
+      .view-result(ng-class='{error: frame.hasErrors}')
+        .view-result-graph.result(ng-show='isActive("graph")', ng-controller="InspectorCtrl")
+          include partials/legend
+          .graph-contents
+            svg(neo-graph
+              graph-data='frame.response.graph'
+              on-item-click='onItemClick($item, "graphItem")'
+              on-item-mouse-over='onItemHover($item, "graphItem")'
+              on-item-mouse-out='onItemHover()'
+              on-node-drag-toggle='onNodeDragToggle($item)'
+              on-canvas-clicked='onItemClick()'
+              ng-controller='D3GraphCtrl'
+              style="pointer-events:fill;")
+          .status-bar
+            .status
+              include partials/inspector
+
+        .view-result-table.result(ng-show='isActive("table")')
+          neo-table(table-data='frame.response.table')
+        .status-bar(ng-show='isActive("table")')
+          .status
+            include partials/result-status
+
+
+        .view-result-error.result(ng-show='frame.hasErrors')
+          pre(ng-bind="frame.detailedErrorText")
+          .status-bar.error
+            .status
+              .fa.fa-exclamation-triangle
+              {{frame.errorText}}
+
+        .view-result-loading(ng-show='frame.isLoading')
+          .spinner
+            span.fa.fa-spinner.fa-spin.fa-2x
+          .status-bar
+            .status
+              span Running...
