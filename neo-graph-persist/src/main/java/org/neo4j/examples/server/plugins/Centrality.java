@@ -52,12 +52,12 @@ public class Centrality extends ServerPlugin
     @Name( "graph_median" )
     @Description( "Get the median of the graph" )
     @PluginTarget( GraphDatabaseService.class )
-    public String GetGraphMedian( @Source GraphDatabaseService graphDb ) {
+    public Node GetGraphMedian( @Source GraphDatabaseService graphDb ) {
+        initializeFloydWarshall(graphDb);
         /*
-        initializeFloydWarshall();
         return GraphMedianAlgo(GlobalGraphOperations.at( graphDb ).getAllNodes());
         */
-        return "Hello graph_median";
+        return null;
     }
 
     @Name( "graph_center" )
@@ -71,18 +71,16 @@ public class Centrality extends ServerPlugin
         return "hello graph_center";
     }
 
-    public void initializeFloydWarshall() {
-        /*
+    public void initializeFloydWarshall(GraphDatabaseService graphDb) {
         if (floydWarshall == null) {
             floydWarshall = new FloydWarshall<Double>(
-            0.0,Double.MAX_VALUE,Direction.OUTGOING,
-            CommonEvaluators.doubleCostEvaluator("cost"),
-            new org.neo4j.graphalgo.impl.util.DoubleAdder(),
-            new org.neo4j.graphalgo.impl.util.DoubleComparator(),
-            GlobalGraphOperations.at( graphDb ).getAllNodes(),
-            GlobalGraphOperations.at( graphDb ).getAllEdges());
+                (Double)0.0,(Double)Double.MAX_VALUE,Direction.OUTGOING,
+                CommonEvaluators.doubleCostEvaluator("cost"),
+                new org.neo4j.graphalgo.impl.util.DoubleAdder(),
+                new org.neo4j.graphalgo.impl.util.DoubleComparator(),
+                GlobalGraphOperations.at( graphDb ).getAllNodes(),
+                GlobalGraphOperations.at( graphDb ).getAllRelationships());
         }
-        */
     }
 
     public Node GraphMedianAlgo(ArrayList<Node> nodeSet, FloydWarshall<Double> floydWarshall) {
@@ -149,8 +147,8 @@ class FloydWarshall<CostType>
     protected CostEvaluator<CostType> costEvaluator = null;
     protected CostAccumulator<CostType> costAccumulator = null;
     protected Comparator<CostType> costComparator = null;
-    protected Set<Node> nodeSet;
-    protected Set<Relationship> relationshipSet;
+    protected Iterable<Node> nodeSet;
+    protected Iterable<Relationship> relationshipSet;
     CostType[][] costMatrix;
     Integer[][] predecessors;
     Map<Node,Integer> nodeIndexes; // node ->index
@@ -182,8 +180,8 @@ class FloydWarshall<CostType>
     public FloydWarshall( CostType startCost, CostType infinitelyBad,
         Direction relationDirection, CostEvaluator<CostType> costEvaluator,
         CostAccumulator<CostType> costAccumulator,
-        Comparator<CostType> costComparator, Set<Node> nodeSet,
-        Set<Relationship> relationshipSet )
+        Comparator<CostType> costComparator, Iterable<Node> nodeSet,
+        Iterable<Relationship> relationshipSet )
     {
         super();
         this.startCost = startCost;
@@ -218,7 +216,8 @@ class FloydWarshall<CostType>
         }
         doneCalculation = true;
         // Build initial matrix
-        int n = nodeSet.size();
+        //int n = nodeSet.iterator().size();
+        int n = 0; // TODO: actually get the true size of ndoeSet.
         costMatrix = (CostType[][]) new Object[n][n];
         predecessors = new Integer[n][n];
         IndexedNodes = new Node[n];
