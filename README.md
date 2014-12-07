@@ -1,28 +1,4 @@
-neo4j Build Setup
------------------
-
-These were done a fresh install of Ubuntu 14.04 with openjdk 7.
-
-    $ git clone git@github.com:jhelbert/830.git
-    
-    $ sudo apt-get install graphviz nodejs make maven openjdk-7-jdk
-
-    $ cd neo4j-master/community/licensecheck-config
-
-    $ mvn install
-
-    $ cd ../server
-
-    $ mvn clean package -P initial-build
-
-There might be some jasmine spec errors
-
-This initial build will fetch a lot of Java packages and
-then compile them all, so be prepared for it to take on the
-order of 10s of minutes.
-
-    $ mvn exec:java
-
+_plugin: neo-graph-persist_
 
 Plugin setup
 ------------
@@ -32,24 +8,22 @@ To make a HelloWorld plugin, I took the following steps:
 1. Append the class name of the new plugin to META-INF:
 
     $ echo 'org.neo4j.examples.server.plugins.HelloWorldWideWebb' >> \
-      neo4j-master/community/server-examples/src/main/resources/META-INF/services/org.neo4j.server.plugins.ServerPlugin
+      neo-graph-persist/src/main/resources/META-INF/services/org.neo4j.server.plugins.ServerPlugin
 
 2. Create the plugin itself. I saved it in
-   neo4j-master/community/server-examples/src/main/java/org/neo4j/examples/server/plugins/HelloWorldWideWebb.java
-
+   neo-graph-persist/src/main/java/org/neo4j/examples/server/plugins/HelloWorldWideWebb.java
 
 The next steps are to build the plugin and drop it into neo4j, and test it out
 over the REST interface exposed by neo4j.
 
 To build the plugin:
 
-    $ cd neo4j-master/community/server-examples/
+    $ cd neo-graph-persist
 
     $ mvn clean install
 
-There should now be a jar of the plugins specified in
-neo4j-master/community/server-examples/pom.xml. We just need to copy this jar
-into the plugins directory of an installed neo4j server.
+There should now be a jar of the plugins specified in META_INF. We just need to
+copy this jar into the plugins directory of an installed neo4j server.
 
 The way I got this to work was to drop them into the plugins directory of a
 neo4j enterprise installation:
