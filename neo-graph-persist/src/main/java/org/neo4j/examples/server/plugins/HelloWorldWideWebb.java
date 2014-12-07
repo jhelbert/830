@@ -36,11 +36,14 @@ import org.neo4j.tooling.GlobalGraphOperations;
 @Description( "An extension to the Neo4j Server for printing Hello World from WWWebb" )
 public class HelloWorldWideWebb extends ServerPlugin
 {
+    private int counter = 0;
+
     @Name( "hello_world_wide_webb" )
     @Description( "Retrieve a friendly greeting from your project partner :)." )
     @PluginTarget( GraphDatabaseService.class )
     public Iterable<String> getHello( @Source GraphDatabaseService graphDb )
     {
+	  counter++;
         ArrayList<String> s = new ArrayList<String>();
         s.add("Hello");
         s.add("from");
@@ -48,7 +51,9 @@ public class HelloWorldWideWebb extends ServerPlugin
         s.add("world");
         s.add("wide");
         s.add("webb");
+	  s.add("counter:");
+	  s.add(Integer.toString(counter));
         return s;
     }
 }
-// END SNIPPET: GetAll
+// END SNIPPET: HelloWorldWideWebb
