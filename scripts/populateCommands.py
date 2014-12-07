@@ -37,3 +37,4 @@ with open("data/com-amazon.ungraph.txt","r") as data:
 	nodes=line.strip().split('\t')
 	print 'MATCH (from {id:'+nodes[0]+'}), (to {id:'+nodes[1]+'}) CREATE from-[:CONNECTED_TO]->to;'
 print 'COMMIT'
+
