@@ -64,8 +64,8 @@ public class Centrality extends ServerPlugin
     @Description( "Get the 'center' of the graph" )
     @PluginTarget( GraphDatabaseService.class )
     public String GetGraphCenter( @Source GraphDatabaseService graphDb ) {
+        initializeFloydWarshall(graphDb);
         /*
-        initializeFloydWarshall();
         return GraphCenterAlgo(GlobalGraphOperations.at( graphDb ).getAllNodes());
         */
         return "hello graph_center";
