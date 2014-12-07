@@ -39,7 +39,7 @@ import org.neo4j.server.plugins.ServerPlugin;
 import org.neo4j.server.plugins.Source;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.server.plugins.PluginTarget;
-
+import org.neo4j.helpers.collection.IteratorUtil; 
 import org.neo4j.tooling.GlobalGraphOperations;
 
 import org.neo4j.graphdb.Direction;
@@ -54,10 +54,7 @@ public class Centrality extends ServerPlugin
     @PluginTarget( GraphDatabaseService.class )
     public Node GetGraphMedian( @Source GraphDatabaseService graphDb ) {
         initializeFloydWarshall(graphDb);
-        /*
         return GraphMedianAlgo(GlobalGraphOperations.at( graphDb ).getAllNodes());
-        */
-        return null;
     }
 
     @Name( "graph_center" )
@@ -79,17 +76,17 @@ public class Centrality extends ServerPlugin
                 new org.neo4j.graphalgo.impl.util.DoubleAdder(),
                 new org.neo4j.graphalgo.impl.util.DoubleComparator(),
                 GlobalGraphOperations.at( graphDb ).getAllNodes(),
-                GlobalGraphOperations.at( graphDb ).getAllRelationships());
+                GlobalGraphOperations.at( graphDb ).getAllRelationships(),
+                graphDb);
         }
     }
 
-    public Node GraphMedianAlgo(ArrayList<Node> nodeSet, FloydWarshall<Double> floydWarshall) {
-        /*
-        HashMap<Node, Integer> mediansSum = new HashMap<Node, Integer>();
+    public Node GraphMedianAlgo(Iterable<Node> nodeSet) {
+        HashMap<Node, Double> mediansSum = new HashMap<Node, Double>();
 
         // sum up shortest distances from eeach node to every other node
         for ( Node startNode : nodeSet) {
-            mediansSum.put(startNode, 0);
+            mediansSum.put(startNode, 0.0);
             for (Node endNode : nodeSet) {
 
                 // does removing this condition speed it up?  even if this is true, you are only adding the path from startNode to startNode which is 0 and still correct
@@ -110,8 +107,6 @@ public class Centrality extends ServerPlugin
         }
 
         return bestMedianNode;
-        */
-        return null;
     }
 
 
@@ -154,6 +149,7 @@ class FloydWarshall<CostType>
     Map<Node,Integer> nodeIndexes; // node ->index
     Node[] IndexedNodes; // index -> node
     protected boolean doneCalculation = false;
+    protected GraphDatabaseService graphDb = null;
 
     /**
      * @param startCost
@@ -181,7 +177,8 @@ class FloydWarshall<CostType>
         Direction relationDirection, CostEvaluator<CostType> costEvaluator,
         CostAccumulator<CostType> costAccumulator,
         Comparator<CostType> costComparator, Iterable<Node> nodeSet,
-        Iterable<Relationship> relationshipSet )
+        Iterable<Relationship> relationshipSet,
+        GraphDatabaseService graphDb)
     {
         super();
         this.startCost = startCost;
@@ -192,6 +189,7 @@ class FloydWarshall<CostType>
         this.costComparator = costComparator;
         this.nodeSet = nodeSet;
         this.relationshipSet = relationshipSet;
+        this.graphDb = graphDb;
     }
 
     /**
@@ -217,7 +215,7 @@ class FloydWarshall<CostType>
         doneCalculation = true;
         // Build initial matrix
         //int n = nodeSet.iterator().size();
-        int n = 0; // TODO: actually get the true size of ndoeSet.
+        int n = IteratorUtil.count(GlobalGraphOperations.at(this.graphDb).getAllNodes());
         costMatrix = (CostType[][]) new Object[n][n];
         predecessors = new Integer[n][n];
         IndexedNodes = new Node[n];
