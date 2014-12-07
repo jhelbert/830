@@ -2,3 +2,4 @@ org.neo4j.examples.server.plugins.DepthTwo
 org.neo4j.examples.server.plugins.GetAll
 org.neo4j.examples.server.plugins.ShortestPath
 org.neo4j.examples.server.plugins.HelloWorldWideWebb
+org.neo4j.examples.server.plugins.Centrality

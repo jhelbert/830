@@ -1,23 +1,24 @@
-opyright (c) 2002-2014 "Neo Technology,"
- * Network Engine for Objects in Lund AB [http://neotechnology.com]
+/**
+ * Licensed to Neo Technology under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Neo Technology licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This file is part of Neo4j.
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Neo4j is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
-package org.neo4j.graphalgo.impl.shortestpath;
+package org.neo4j.examples.server.plugins;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -27,44 +28,51 @@ import java.util.Set;
 
 import org.neo4j.graphalgo.CostAccumulator;
 import org.neo4j.graphalgo.CostEvaluator;
+import org.neo4j.graphalgo.CommonEvaluators;
+import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.Direction;
+import org.neo4j.server.plugins.Description;
+import org.neo4j.server.plugins.Name;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
+import org.neo4j.server.plugins.ServerPlugin;
+import org.neo4j.server.plugins.Source;
 import org.neo4j.graphdb.GraphDatabaseService;
+import org.neo4j.server.plugins.PluginTarget;
+
+import org.neo4j.tooling.GlobalGraphOperations;
 
 import org.neo4j.graphdb.Direction;
 import org.neo4j.graphdb.Relationship;
 
-/**
- * This provides an implementation of the Floyd Warshall algorithm solving the
- * all pair shortest path problem.
- * @complexity The {@link CostEvaluator} is called once for every relationship.
- *             The {@link CostAccumulator} and cost comparator are both called
- *             n^3 times. Assuming they run in constant time, the time
- *             complexity for this algorithm is O(n^3).
- * @author Patrik Larsson
- * @param <CostType>
- *            The datatype the edge weights are represented by.
- */
-@Description( "An extension to the Neo4j Server for printing Hello World from WWWebb" )
+@Description( "Expose some centrality algorithms (?)" )
 public class Centrality extends ServerPlugin
 {
     FloydWarshall<Double> floydWarshall = null;
     @Name( "graph_median" )
-    public Node GetGraphMedian( @Source GraphDatabaseService graphDb ) {
-
+    @Description( "Get the median of the graph" )
+    @PluginTarget( GraphDatabaseService.class )
+    public String GetGraphMedian( @Source GraphDatabaseService graphDb ) {
+        /*
         initializeFloydWarshall();
         return GraphMedianAlgo(GlobalGraphOperations.at( graphDb ).getAllNodes());
+        */
+        return "Hello graph_median";
     }
 
     @Name( "graph_center" )
-    public Node GetGraphCenter( @Source GraphDatabaseService graphDb ) {
-
+    @Description( "Get the 'center' of the graph" )
+    @PluginTarget( GraphDatabaseService.class )
+    public String GetGraphCenter( @Source GraphDatabaseService graphDb ) {
+        /*
         initializeFloydWarshall();
         return GraphCenterAlgo(GlobalGraphOperations.at( graphDb ).getAllNodes());
+        */
+        return "hello graph_center";
     }
 
     public void initializeFloydWarshall() {
+        /*
         if (floydWarshall == null) {
             floydWarshall = new FloydWarshall<Double>(
             0.0,Double.MAX_VALUE,Direction.OUTGOING,
@@ -74,11 +82,11 @@ public class Centrality extends ServerPlugin
             GlobalGraphOperations.at( graphDb ).getAllNodes(),
             GlobalGraphOperations.at( graphDb ).getAllEdges());
         }
+        */
     }
 
-
-
     public Node GraphMedianAlgo(ArrayList<Node> nodeSet, FloydWarshall<Double> floydWarshall) {
+        /*
         HashMap<Node, Integer> mediansSum = new HashMap<Node, Integer>();
 
         // sum up shortest distances from eeach node to every other node
@@ -104,30 +112,36 @@ public class Centrality extends ServerPlugin
         }
 
         return bestMedianNode;
+        */
+        return null;
     }
 
 
-public Node GraphCenterAlgo(ArrayList<Node> nodeSet) {
-    HashMap<Node, Integer> radius = new HashMap<Node, Integer>();
-    for ( Node startNode : nodeSet) {
-        radius.put(startNode, 0);
-        for (Node endNode : nodeSet) {
-            if (startNode != endNode && fw.getCost(startNode, endNode) > radius.get(startNode) ) {
-                radius.put(startNode, fw.getCost(startNode, endNode));
+    public Node GraphCenterAlgo(ArrayList<Node> nodeSet) {
+        /*
+        HashMap<Node, Integer> radius = new HashMap<Node, Integer>();
+        for ( Node startNode : nodeSet) {
+            radius.put(startNode, 0);
+            for (Node endNode : nodeSet) {
+                if (startNode != endNode && fw.getCost(startNode, endNode) > radius.get(startNode) ) {
+                    radius.put(startNode, fw.getCost(startNode, endNode));
+                }
             }
         }
-    }
 
-    Node AAAAAAAAAAAA                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ````````````````````            bestCenterNode = null;
-    for (Node n : radius.keySet()) {
-        if (bestCenterNode == null || radius.get(n) < radius.get(bestCenterNode)) {
-            bestCenterNode = n;
+        Node bestCenterNode = null;
+        for (Node n : radius.keySet()) {
+            if (bestCenterNode == null || radius.get(n) < radius.get(bestCenterNode)) {
+                bestCenterNode = n;
+            }
         }
+        return bestCenterNode;
+        */
+        return null;
     }
-    return bestCenterNode;
 }
-}
-public class FloydWarshall<CostType>
+
+class FloydWarshall<CostType>
 {
     protected CostType startCost; // starting cost for all nodes
     protected CostType infinitelyBad; // starting value for calculation
@@ -310,10 +324,4 @@ public class FloydWarshall<CostType>
         return path;
     }
 }
-
-
-
-
-
-
 
