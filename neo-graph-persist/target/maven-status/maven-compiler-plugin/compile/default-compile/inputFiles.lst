@@ -1,0 +1,9 @@
+/home/webbhorn/neo-graph-persist/target/generated-sources/version/org/neo4j/examples/server/impl/ComponentVersion.java
+/home/webbhorn/neo-graph-persist/src/main/java/org/neo4j/examples/server/plugins/HelloWorldWideWebb.java
+/home/webbhorn/neo-graph-persist/src/main/java/org/neo4j/examples/server/plugins/GetAll.java
+/home/webbhorn/neo-graph-persist/src/main/java/org/neo4j/examples/server/plugins/DepthTwo.java
+/home/webbhorn/neo-graph-persist/src/main/java/org/neo4j/examples/server/TraversalDefinition.java
+/home/webbhorn/neo-graph-persist/src/main/java/org/neo4j/examples/server/CreateSimpleGraph.java
+/home/webbhorn/neo-graph-persist/src/main/java/org/neo4j/examples/server/unmanaged/HelloWorldResource.java
+/home/webbhorn/neo-graph-persist/src/main/java/org/neo4j/examples/server/plugins/ShortestPath.java
+/home/webbhorn/neo-graph-persist/src/main/java/org/neo4j/examples/server/Relation.java
