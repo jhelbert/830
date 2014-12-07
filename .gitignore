@@ -1,0 +1,3 @@
+neo-graph-persist/target/
+*.swp
+neo4j-enterprise-2.1.5/plugins
