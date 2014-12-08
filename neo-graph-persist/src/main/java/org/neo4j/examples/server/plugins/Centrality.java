@@ -52,7 +52,7 @@ public class Centrality extends ServerPlugin
     @Name( "graph_median" )
     @Description( "Get the median of the graph" )
     @PluginTarget( GraphDatabaseService.class )
-    public Node GetGraphMedian( @Source GraphDatabaseService graphDb ) {
+    Node GetGraphMedian( @Source GraphDatabaseService graphDb ) {
         Node medianNode = null;
         try (Transaction tx = graphDb.beginTx())
         {
@@ -66,12 +66,15 @@ public class Centrality extends ServerPlugin
     @Name( "graph_center" )
     @Description( "Get the 'center' of the graph" )
     @PluginTarget( GraphDatabaseService.class )
-    public String GetGraphCenter( @Source GraphDatabaseService graphDb ) {
-        initializeFloydWarshall(graphDb);
-        /*
-        return GraphCenterAlgo(GlobalGraphOperations.at( graphDb ).getAllNodes());
-        */
-        return "hello graph_center";
+    public Node GetGraphCenter( @Source GraphDatabaseService graphDb ) {
+        Node centerNode = null;
+        try (Transaction tx = graphDb.beginTx())
+        {
+            initializeFloydWarshall(graphDb);
+            centerNode = GraphCenterAlgo(GlobalGraphOperations.at( graphDb ).getAllNodes());
+            tx.success();
+        }
+        return centerNode;
     }
 
     public void initializeFloydWarshall(GraphDatabaseService graphDb) {
@@ -106,7 +109,10 @@ public class Centrality extends ServerPlugin
 
         // can be speed this up by skipping this step altogether?  making the comparison in the prev loop
         Node bestMedianNode = null;
+        String r = "";
         for (Node n : mediansSum.keySet()) {
+            r += "n";
+            r += mediansSum.get(n);
             if (bestMedianNode == null || mediansSum.get(n) < mediansSum.get(bestMedianNode)) {
                 bestMedianNode = n;
             }
@@ -116,27 +122,31 @@ public class Centrality extends ServerPlugin
     }
 
 
-    public Node GraphCenterAlgo(ArrayList<Node> nodeSet) {
-        /*
-        HashMap<Node, Integer> radius = new HashMap<Node, Integer>();
+    public Node GraphCenterAlgo(Iterable<Node> nodeSet) {
+
+        HashMap<Node, Double> radius = new HashMap<Node, Double>();
+         String r = "";
         for ( Node startNode : nodeSet) {
-            radius.put(startNode, 0);
+            radius.put(startNode, 0.0);
             for (Node endNode : nodeSet) {
-                if (startNode != endNode && fw.getCost(startNode, endNode) > radius.get(startNode) ) {
-                    radius.put(startNode, fw.getCost(startNode, endNode));
+
+                if (startNode != endNode && floydWarshall.getCost(startNode, endNode) > radius.get(startNode) ) {
+                    radius.put(startNode, floydWarshall.getCost(startNode, endNode));
                 }
             }
         }
 
         Node bestCenterNode = null;
         for (Node n : radius.keySet()) {
+             r += "n";
+                 r += radius.get(n);
             if (bestCenterNode == null || radius.get(n) < radius.get(bestCenterNode)) {
                 bestCenterNode = n;
             }
         }
+        // return r;
         return bestCenterNode;
-        */
-        return null;
+
     }
 }
 
