@@ -1,0 +1,47 @@
+2014-12-08 04:26:01.057+0000 INFO  [API] Setting startup timeout to: 120000ms based on 120000
+2014-12-08 04:26:02.788+0000 INFO  [API] Successfully started database
+2014-12-08 04:26:02.905+0000 INFO  [API] Starting HTTP on port :7474 with 4 threads available
+2014-12-08 04:26:03.287+0000 INFO  [API] Enabling HTTPS on port :7473
+2014-12-08 04:26:03.515+0000 INFO  [API] Loaded server plugin "GetAll"
+2014-12-08 04:26:03.518+0000 INFO  [API]   GraphDatabaseService.get_all_nodes: Get all nodes from the Neo4j graph database
+2014-12-08 04:26:03.518+0000 INFO  [API]   GraphDatabaseService.getAllRelationships: Get all relationships from the Neo4j graph database
+2014-12-08 04:26:03.519+0000 INFO  [API] Loaded server plugin "ShortestPath"
+2014-12-08 04:26:03.519+0000 INFO  [API]   Node.shortestPath: Find the shortest path between two nodes.
+2014-12-08 04:26:03.519+0000 INFO  [API] Loaded server plugin "DepthTwo"
+2014-12-08 04:26:03.519+0000 INFO  [API]   Node.nodesOnDepthTwo: Traverse depth two and return the end nodes
+2014-12-08 04:26:03.520+0000 INFO  [API]   Node.pathsOnDepthTwo: Traverse depth two and return the paths
+2014-12-08 04:26:03.520+0000 INFO  [API]   Node.relationshipsOnDepthTwo: Traverse depth two and return the last relationships
+2014-12-08 04:26:03.520+0000 INFO  [API] Loaded server plugin "Centrality"
+2014-12-08 04:26:03.520+0000 INFO  [API]   GraphDatabaseService.graph_center: Get the 'center' of the graph
+2014-12-08 04:26:03.520+0000 INFO  [API]   GraphDatabaseService.graph_median: Get the median of the graph
+2014-12-08 04:26:03.521+0000 INFO  [API] Loaded server plugin "HelloWorldWideWebb"
+2014-12-08 04:26:03.521+0000 INFO  [API]   GraphDatabaseService.hello_world_wide_webb: Retrieve a friendly greeting from your project partner :).
+23:26:03.544 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @4321ms
+2014-12-08 04:26:03.632+0000 INFO  [API] Mounting static content at [/webadmin] from [webadmin-html]
+2014-12-08 04:26:03.729+0000 INFO  [API] Mounting static content at [/browser] from [browser]
+23:26:03.736 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.1.v20140609
+23:26:03.764 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.h.MovedContextHandler@47ad53e6{/,null,AVAILABLE}
+23:26:03.901 [main] INFO  o.e.j.w.StandardDescriptorProcessor - NO JSP Support for /webadmin, did not find org.apache.jasper.servlet.JspServlet
+23:26:03.924 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@4d9fba26{/webadmin,jar:file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/system/lib/neo4j-server-2.2.0-M01-static-web.jar!/webadmin-html,AVAILABLE}
+23:26:04.577 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@64dee80b{/db/manage,null,AVAILABLE}
+23:26:04.900 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@8cc15ac{/db/data,null,AVAILABLE}
+23:26:04.920 [main] INFO  o.e.j.w.StandardDescriptorProcessor - NO JSP Support for /browser, did not find org.apache.jasper.servlet.JspServlet
+23:26:04.921 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@7dda83b7{/browser,jar:file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/system/lib/neo4j-browser-2.2.0-M01.jar!/browser,AVAILABLE}
+23:26:05.047 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7f37500e{/,null,AVAILABLE}
+23:26:05.079 [main] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@46e1ab12{HTTP/1.1}{localhost:7474}
+23:26:05.712 [main] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@2f28e828{SSL-HTTP/1.1}{localhost:7473}
+23:26:05.712 [main] INFO  org.eclipse.jetty.server.Server - Started @6497ms
+2014-12-08 04:26:05.713+0000 INFO  [API] Server started on: http://localhost:7474/
+2014-12-08 04:26:05.713+0000 INFO  [API] Remote interface ready and available at [http://localhost:7474/]
+2014-12-08 04:26:11.381+0000 INFO  [API] Neo4j Server shutdown initiated by request
+23:26:11.398 [Thread-13] INFO  o.e.jetty.server.ServerConnector - Stopped ServerConnector@46e1ab12{HTTP/1.1}{localhost:7474}
+23:26:11.398 [Thread-13] INFO  o.e.jetty.server.ServerConnector - Stopped ServerConnector@2f28e828{SSL-HTTP/1.1}{localhost:7473}
+23:26:11.400 [Thread-13] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7f37500e{/,null,UNAVAILABLE}
+23:26:11.402 [Thread-13] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.w.WebAppContext@7dda83b7{/browser,jar:file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/system/lib/neo4j-browser-2.2.0-M01.jar!/browser,UNAVAILABLE}
+23:26:11.402 [Thread-13] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@8cc15ac{/db/data,null,UNAVAILABLE}
+23:26:11.403 [Thread-13] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@64dee80b{/db/manage,null,UNAVAILABLE}
+23:26:11.405 [Thread-13] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.w.WebAppContext@4d9fba26{/webadmin,jar:file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/system/lib/neo4j-server-2.2.0-M01-static-web.jar!/webadmin-html,UNAVAILABLE}
+23:26:11.405 [Thread-13] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.h.MovedContextHandler@47ad53e6{/,null,UNAVAILABLE}
+2014-12-08 04:26:11.413+0000 INFO  [API] Successfully shutdown Neo4j Server.
+2014-12-08 04:26:11.450+0000 INFO  [API] Successfully stopped database
+2014-12-08 04:26:11.450+0000 INFO  [API] Successfully shutdown database.

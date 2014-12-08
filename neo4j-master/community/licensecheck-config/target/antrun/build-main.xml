@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main" if="version-package">
+  <macrodef name="generate-version">
+    <attribute name="package"/>
+    <sequential>
+      <local name="the-package"/>
+      <local name="version-dir"/>
+      <property name="the-package" value="@{package}"/>
+      <loadresource property="version-dir">
+        <propertyresource name="the-package"/>
+        <filterchain>
+          <tokenfilter>
+            <filetokenizer/>
+            <replacestring to="/" from="."/>
+          </tokenfilter>
+        </filterchain>
+      </loadresource>
+      <mkdir dir="target/generated-sources/version/org/neo4j/${version-dir}/"/>
+      <property name="build.number" value="${env.BUILD_NUMBER}"/>
+      <property name="git.describe" value="${git.commit.id.describe}"/>
+      <property name="git.branch" value="${git.commit.id.branch}"/>
+      <property name="git.commit" value="${git.commit.id}"/>
+      <echo file="target/generated-sources/version/org/neo4j/${version-dir}/ComponentVersion.java">package org.neo4j.${the-package};
+
+import org.neo4j.kernel.Version;
+import org.neo4j.helpers.Service;
+
+@Service.Implementation(Version.class)
+@SuppressWarnings(&quot;deprecation&quot;)
+public class ComponentVersion extends Version
+{
+    public ComponentVersion() { super(&quot;licensecheck-config&quot;, &quot;2.2-SNAPSHOT&quot;); }
+    public @Override String getReleaseVersion() { return &quot;2.2-SNAPSHOT&quot;; }
+    protected @Override String getBuildNumber() { return &quot;${build.number}&quot;; }
+    protected @Override String getCommitId() { return &quot;${git.commit}&quot;; }
+    protected @Override String getBranchName() { return &quot;${git.branch}&quot;; }
+    protected @Override String getCommitDescription() { return &quot;${git.describe}&quot;; }
+}</echo>
+    </sequential>
+  </macrodef>
+  <generate-version package="${version-package}"/>
+</target>
+</project>
