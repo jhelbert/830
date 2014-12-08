@@ -54,7 +54,7 @@ public class Centrality extends ServerPlugin
     @Name( "graph_median" )
     @Description( "Get the median of the graph" )
     @PluginTarget( GraphDatabaseService.class )
-    Node GetGraphMedian( @Source GraphDatabaseService graphDb ) {
+    public Node GetGraphMedian( @Source GraphDatabaseService graphDb ) {
         Node medianNode = null;
         try (Transaction tx = graphDb.beginTx())
         {
