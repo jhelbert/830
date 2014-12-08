@@ -1,7 +1,9 @@
 #!/bin/bash
 
-curl -X POST \
-  http://localhost:7474/db/data/ext/Centrality/graphdb/graph_center
+KEY=$(cat auth.key)
+URI=http://neo4j:$KEY@localhost:7474
 
+curl -X POST \
+  $URI/db/data/ext/Centrality/graphdb/graph_center
 
 echo ''

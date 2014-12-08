@@ -1,6 +1,9 @@
 #!/bin/bash
 
+KEY=$(cat auth.key)
+URI=http://neo4j:$KEY@localhost:7474
+
 curl -X POST \
-  http://localhost:7474/db/data/ext/HelloWorldWideWebb/graphdb/hello_world_wide_webb
+  $URI/db/data/ext/HelloWorldWideWebb/graphdb/hello_world_wide_webb
 
 echo '\n'
