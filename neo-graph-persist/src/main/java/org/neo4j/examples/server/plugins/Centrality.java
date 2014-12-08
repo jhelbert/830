@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import java.util.Iterator;
+
 import org.neo4j.graphalgo.CostAccumulator;
 import org.neo4j.graphalgo.CostEvaluator;
 import org.neo4j.graphalgo.CommonEvaluators;
@@ -77,6 +79,53 @@ public class Centrality extends ServerPlugin
         return centerNode;
     }
 
+    @Name( "widest_paths" )
+    @Description( "Get the widest paths" )
+    @PluginTarget( GraphDatabaseService.class )
+    public String GetWidestPaths( @Source GraphDatabaseService graphDb ) {
+        Node centerNode = null;
+        List<Integer>[][] paths = null;
+        String s = "";
+        try (Transaction tx = graphDb.beginTx())
+        {
+                final int n = 8;
+                List<Map<Integer, Integer>> links = new ArrayList<>(n);
+                for (int i = 0; i < n; i++)
+                    links.add(new HashMap<Integer, Integer>());
+                Iterator<Relationship> relationships = GlobalGraphOperations.at( graphDb ).getAllRelationships().iterator();
+                while (relationships.hasNext()) {
+                    Relationship r = relationships.next();
+                    links.get(((Long)r.getStartNode().getId()).intValue()).put(((Long)r.getEndNode().getId()).intValue(), ((Long) r.getProperty("cost",0)).intValue());
+                }
+
+                MinimaxFloydWarshall mfw = new MinimaxFloydWarshall(links);
+                paths = mfw.findAllPairsMinimaxPaths();
+                for (List<Integer>[] p : paths) {
+                    if (p != null) {
+                        for (List<Integer> i : p) {
+                        {
+                            if (i != null) {
+                                for (int j : i) {
+                                s += j + ",";
+                            }
+                            s += "||";
+                            }
+
+                        }
+
+                    }
+                    }
+
+                    s += "     ";
+                }
+
+            tx.success();
+        }
+        return s;
+    }
+
+
+
     public void initializeFloydWarshall(GraphDatabaseService graphDb) {
         if (floydWarshall == null) {
             floydWarshall = new FloydWarshall<Double>(
@@ -120,6 +169,8 @@ public class Centrality extends ServerPlugin
 
         return bestMedianNode;
     }
+
+
 
 
     public Node GraphCenterAlgo(Iterable<Node> nodeSet) {
