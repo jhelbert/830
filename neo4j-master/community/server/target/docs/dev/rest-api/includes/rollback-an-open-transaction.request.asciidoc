@@ -1,0 +1,2 @@
+* *+DELETE+*  +http://localhost:7474/db/data/transaction/3+
+* *+Accept:+* +application/json; charset=UTF-8+

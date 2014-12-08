@@ -1,0 +1,19 @@
+["dot", "Final-Graph-creating-a-loop-relationship.svg", "neoviz", ""]
+----
+  N6 [
+    label = "{Node\[6\]name = \'Sara\'\l}"
+  ]
+  N7 [
+    label = "{Node\[7\]name = \'Joe\'\l}"
+  ]
+  N7 -> N6 [
+    color = "#2e3436"
+    fontcolor = "#2e3436"
+    label = "knows\n"
+  ]
+  N7 -> N7 [
+    color = "#4e9a06"
+    fontcolor = "#4e9a06"
+    label = "LOVES\n"
+  ]
+----

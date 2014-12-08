@@ -1,0 +1,12 @@
+* *+POST+*  +http://localhost:7474/db/manage/server/console+
+* *+Accept:+* +application/json; charset=UTF-8+
+* *+Content-Type:+* +application/json+
+
+[source,javascript]
+----
+{
+  "command" : "ls",
+  "engine" : "shell"
+}
+----
+

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.388" tests="109" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib"/>
+    <property name="java.vm.version" value="24.71-b01"/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/JustinHelbert/830/830/neo4j-master/community/server"/>
+    <property name="java.runtime.version" value="1.7.0_71-b14"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/endorsed"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/var/folders/hl/_37m6d6x62j61jgzxgz8s8qh0000gq/T/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="classworlds.conf" value="/usr/local/Cellar/maven/3.2.3/libexec/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/JustinHelbert/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.9.5"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/JustinHelbert"/>
+    <property name="user.timezone" value="America/New_York"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="JustinHelbert"/>
+    <property name="java.class.path" value="/usr/local/Cellar/maven/3.2.3/libexec/boot/plexus-classworlds-2.5.1.jar"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean package -P initial-build"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.7.0_71"/>
+    <property name="java.ext.dirs" value="/Users/JustinHelbert/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/local/Cellar/maven/3.2.3/libexec"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase name="shouldBeAbleToIndexNodeUniquely" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.006"/>
+  <testcase name="shouldRespondWith201AndLocationWhenRelationshipIsCreatedWithoutProperties" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.007"/>
+  <testcase name="shouldNotReturnDuplicatesIfSameTypeSpecifiedMoreThanOnce" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith201WhenTryingToCreateRelationshipBackToSelf" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith404ForRemoveNodePropertiesForNonExistingNode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldGet404WhenTraversingFromNonExistentNode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldNotBeAbleToIndexRelationshipUniquelyWithRequiredParameterMissing" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.012"/>
+  <testcase name="shouldRespondWithNoContentWhenNoRelationshipIndexesExist" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0"/>
+  <testcase name="shouldRespondWith204WhenSuccessfullyRemovedRelationshipPropertiesWhichAreEmpty" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldRespondWith400WhenTryingToCreateRelationshipWithUnsupportedProperties" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith204AndSetCorrectDataWhenSettingRelationshipProperty" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToIndexNode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith204WhenSuccessfullyRemovedRelationshipProperties" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.004"/>
+  <testcase name="shouldRespondWith404ForSetNodePropertyOnNonExistingNode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith404WhenNoRelationshipFromWhichToRemoveProperty" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToGetOtherResultTypesWhenTraversing" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.008"/>
+  <testcase name="shouldRespondWith404WhenTryingToCreateRelationshipFromNonExistentNode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToGetListOfNodeRepresentationsFromIndexLookup" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.01"/>
+  <testcase name="shouldNotBeAbleToIndexRelationshipUniquelyWithBothUriAndCreationalDataInPayload" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.012"/>
+  <testcase name="shouldRespondWith400WhenSettingRelationshipPropertiesWithBadJson" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.006"/>
+  <testcase name="shouldBeAbleToIndexRelationshipUniquely" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.004"/>
+  <testcase name="shouldRespondWith400ForSetNodePropertyWithInvalidJson" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.006"/>
+  <testcase name="shouldNotBeAbleToIndexNodeUniquelyWithBothUriAndPropertiesInPayload" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.003"/>
+  <testcase name="shouldRespondWith404WhenNoRelationshipFromWhichToRemoveProperties" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldReturnRelationshipRepresentationWhenCreatingRelationship" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith204ForRemoveNodeProperties" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith201LocationHeaderAndNodeRepresentationInJSONWhenPopulatedNodeCreated" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.003"/>
+  <testcase name="uniquelyIndexedRelationshipGetsTheSpecifiedKeyAndValueAsPropertiesIfNoPropertiesAreSpecified" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.005"/>
+  <testcase name="shouldBeAbleToGetListOfNodeRepresentationsFromIndexQuery" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.015"/>
+  <testcase name="shouldRespondWith200ForGetNodeProperties" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToGetListOfRelationshipRepresentationsFromIndexQuery" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.008"/>
+  <testcase name="shouldRespondWith201AndLocationWhenRelationshipIsCreatedWithProperties" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.003"/>
+  <testcase name="shouldRespondWith400WhenTransferringCorruptJsonPayload" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.007"/>
+  <testcase name="shouldRespondWith409IfNodeCannotBeDeleted" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToGetListOfNodeRepresentationsFromIndexQueryWithDefaultKey" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.009"/>
+  <testcase name="shouldRespondWithAvailableIndexRelationshipRoots" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith400WhenNodeCreatedWithUnsupportedPropertyData" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.003"/>
+  <testcase name="shouldBeAbleToGetRoot" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="relationshipAutoIndexerEnabling" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0"/>
+  <testcase name="shouldGet404WhenRetrievingRelationshipThatDoesNotExist" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith200ForGetNodeProperty" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldRespondWith200AndDataForGetRelationshipProperties" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldGet200WhenRetrievingARelationshipFromANode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldBeAbleToRemoveRelationshipFromIndex" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.006"/>
+  <testcase name="shouldRespondWith200AndNodeRepresentationInJSONWhenNodeRequested" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldBeAbleToRemoveRelationshipIndex" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldBeAbleToGetRootWhenNoReferenceNodePresent" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldBeAbleToParseJsonEvenWithUnicodeMarkerAtTheStart" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.007"/>
+  <testcase name="shouldRespondWith204AndSetCorrectDataWhenSettingRelationshipProperties" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.004"/>
+  <testcase name="addRemoveAutoindexPropertiesOnRelationships" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldRespondWithNoIndexOrOnlyNodeAutoIndex" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0"/>
+  <testcase name="shouldRespondWith201LocationHeaderAndNodeRepresentationInJSONWhenEmptyNodeCreated" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldGet204WhenRemovingARelationship" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldGet200AndEmptyListWhenNothingFoundInIndexLookup" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="nodeAutoindexingSupposedToWork" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.004"/>
+  <testcase name="addRemoveAutoindexPropertiesOnNodes" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldBeAbleToGetRelationshipRepresentationFromIndexUri" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.006"/>
+  <testcase name="shouldRespondWith400WhenTransferringIncompatibleJsonPayload" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.006"/>
+  <testcase name="specifiedPropertiesOverrideKeyAndValueForUniquelyIndexedNodes" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.004"/>
+  <testcase name="shouldGet200WhenSuccessfullyRetrievedPropertyOnRelationship" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith400WhenTryingToCreateRelationshipWithBadJson" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.007"/>
+  <testcase name="shouldRespondWith404WhenRemovingRelationshipPropertyWhichDoesNotExist" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.003"/>
+  <testcase name="shouldGet404WhenRemovingNonExistingProperty" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.003"/>
+  <testcase name="shouldGet200WhenNoHitsReturnedFromTraverse" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldRespondWith400WhenTryingToCreateRelationshipToNonExistentNode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldGet404WhenRemovingPropertyFromNonExistingNode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldBeAbleToGetNodeRepresentationFromIndexUri" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.005"/>
+  <testcase name="shouldSetRightValueForSetNodeProperty" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToRemoveNodeProperties" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldNotBeAbleToCreateAnIndexWithEmptyName" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.007"/>
+  <testcase name="shouldNotBeAbleToIndexNodeUniquelyWithRequiredParameterMissing" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.008"/>
+  <testcase name="shouldGetPropertiesForGetNodeProperties" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldGetSomeHitsWhenTraversingWithDefaultDescription" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToGetListOfRelationshipRepresentationsFromIndexLookup" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.006"/>
+  <testcase name="shouldRespondWith200AndEmptyListOfRelationshipRepresentationsWhenGettingRelationshipsForANodeWithoutRelationships" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldBeAbleToRemoveNodeIndex" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.003"/>
+  <testcase name="shouldAdvertiseUriForQueringAllRelationsInTheDatabase" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldRespondWith404WhenSettingPropertiesOnNodeThatDoesNotExist" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToFindSinglePathBetweenTwoNodesEvenWhenAskingForAllPaths" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldGet404IfRemovingNonExistentNodeIndexing" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToRemoveNodeFromIndex" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.003"/>
+  <testcase name="shouldRespondWith400WhenSettingRelationshipPropertyWithBadJson" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.006"/>
+  <testcase name="uniquelyIndexedNodeGetsTheSpecifiedKeyAndValueAsPropertiesIfNoPropertiesAreSpecified" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToRemoveNodeProperty" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToGetListOfRelationshipRepresentationsFromIndexQueryWithDefaultKey" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.005"/>
+  <testcase name="shouldFailGracefullyWhenViolatingConstraintOnPropertyUpdate" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.03"/>
+  <testcase name="shouldRespondWith400WhenNodeCreatedWithInvalidJSON" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.004"/>
+  <testcase name="shouldRespondWith404IfNodeToBeDeletedDoesNotExist" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldRespondWith204ForSetNodeProperty" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith404ForGetNonExistentNodeProperty" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.003"/>
+  <testcase name="shouldRespondWith404WhenRequestedNodeDoesNotExist" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldRespondWith204OnSuccessfulDelete" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="nodeAutoIndexerEnabling" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0"/>
+  <testcase name="shouldRespondWith204AfterSettingPropertiesOnExistingNode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldGet404WhenCannotResolveAPropertyOnRelationship" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToDescribeTraverser" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.009"/>
+  <testcase name="shouldRespondWith404ForGetNodePropertyOnNonExistentNode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.003"/>
+  <testcase name="shouldRespondWith404WhenGettingIncomingRelationshipsForNonExistingNode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWithAvailableIndexNodeRoots" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldGet404IfRemovingNonExistentRelationshipIndexing" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith200AndListOfRelationshipRepresentationsWhenGettingRelationshipsForANode" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.006"/>
+  <testcase name="shouldReturnCorrectValueForGetNodeProperty" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldRespondWith404WhenSettingRelationshipPropertiesOnNonExistingRelationship" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldGet404WhenRemovingNonExistentRelationship" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.002"/>
+  <testcase name="shouldBeAbleToFindSinglePathBetweenTwoNodes" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="shouldRespondWith404WhenSettingRelationshipPropertyOnNonExistingRelationship" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+  <testcase name="specifiedPropertiesOverrideKeyAndValueForUniquelyIndexedRelationships" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.006"/>
+  <testcase name="shouldRespondWith201LocationHeaderAndNodeRepresentationInJSONWhenPopulatedNodeCreatedWithArrays" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.006"/>
+  <testcase name="shouldRespondWith204WhenRemovingRelationshipProperty" classname="org.neo4j.server.rest.web.RestfulGraphDatabaseTest" time="0.001"/>
+</testsuite>

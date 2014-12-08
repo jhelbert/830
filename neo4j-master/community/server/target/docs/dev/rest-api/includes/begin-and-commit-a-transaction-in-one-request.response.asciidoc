@@ -1,0 +1,16 @@
+* *+200:+* +OK+
+* *+Content-Type:+* +application/json+
+
+[source,javascript]
+----
+{
+  "results" : [ {
+    "columns" : [ "id(n)" ],
+    "data" : [ {
+      "row" : [ 15 ]
+    } ]
+  } ],
+  "errors" : [ ]
+}
+----
+

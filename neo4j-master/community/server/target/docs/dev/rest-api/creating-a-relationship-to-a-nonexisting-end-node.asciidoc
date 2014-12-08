@@ -1,0 +1,14 @@
+[[rest-api-creating-a-relationship-to-a-nonexisting-end-node]]
+=== Creating a relationship to a nonexisting end node ===
+
+.Final Graph
+include::includes/creating-a-relationship-to-a-nonexisting-end-node.graph.asciidoc[]
+
+_Example request_
+
+include::includes/creating-a-relationship-to-a-nonexisting-end-node.request.asciidoc[]
+
+_Example response_
+
+include::includes/creating-a-relationship-to-a-nonexisting-end-node.response.asciidoc[]
+

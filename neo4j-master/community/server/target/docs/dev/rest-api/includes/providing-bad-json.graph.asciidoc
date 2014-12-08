@@ -1,0 +1,14 @@
+["dot", "Final-Graph-providing-bad-JSON.svg", "neoviz", ""]
+----
+  N8 [
+    label = "{Node\[8\]name = \'Sara\'\l}"
+  ]
+  N9 [
+    label = "{Node\[9\]name = \'Joe\'\l}"
+  ]
+  N9 -> N8 [
+    color = "#2e3436"
+    fontcolor = "#2e3436"
+    label = "knows\n"
+  ]
+----

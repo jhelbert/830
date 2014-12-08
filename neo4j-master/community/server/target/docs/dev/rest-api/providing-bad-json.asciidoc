@@ -1,0 +1,14 @@
+[[rest-api-providing-bad-json]]
+=== Providing bad JSON ===
+
+.Final Graph
+include::includes/providing-bad-json.graph.asciidoc[]
+
+_Example request_
+
+include::includes/providing-bad-json.request.asciidoc[]
+
+_Example response_
+
+include::includes/providing-bad-json.response.asciidoc[]
+

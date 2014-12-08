@@ -1,0 +1,13 @@
+* *+POST+*  +http://localhost:7474/db/data/transaction/8/commit+
+* *+Accept:+* +application/json; charset=UTF-8+
+* *+Content-Type:+* +application/json+
+
+[source,javascript]
+----
+{
+  "statements" : [ {
+    "statement" : "This is not a valid Cypher Statement."
+  } ]
+}
+----
+

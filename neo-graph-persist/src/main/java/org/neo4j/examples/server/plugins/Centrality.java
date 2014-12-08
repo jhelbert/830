@@ -39,7 +39,7 @@ import org.neo4j.server.plugins.ServerPlugin;
 import org.neo4j.server.plugins.Source;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.server.plugins.PluginTarget;
-import org.neo4j.helpers.collection.IteratorUtil; 
+import org.neo4j.helpers.collection.IteratorUtil;
 import org.neo4j.tooling.GlobalGraphOperations;
 
 import org.neo4j.graphdb.Direction;
@@ -53,8 +53,14 @@ public class Centrality extends ServerPlugin
     @Description( "Get the median of the graph" )
     @PluginTarget( GraphDatabaseService.class )
     public Node GetGraphMedian( @Source GraphDatabaseService graphDb ) {
-        initializeFloydWarshall(graphDb);
-        return GraphMedianAlgo(GlobalGraphOperations.at( graphDb ).getAllNodes());
+        Node medianNode = null;
+        try (Transaction tx = graphDb.beginTx())
+        {
+            initializeFloydWarshall(graphDb);
+            medianNode = GraphMedianAlgo(GlobalGraphOperations.at( graphDb ).getAllNodes());
+            tx.success();
+        }
+        return medianNode;
     }
 
     @Name( "graph_center" )

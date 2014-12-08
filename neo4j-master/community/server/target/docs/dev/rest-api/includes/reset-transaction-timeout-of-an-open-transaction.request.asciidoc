@@ -1,0 +1,11 @@
+* *+POST+*  +http://localhost:7474/db/data/transaction/2+
+* *+Accept:+* +application/json; charset=UTF-8+
+* *+Content-Type:+* +application/json+
+
+[source,javascript]
+----
+{
+  "statements" : [ ]
+}
+----
+

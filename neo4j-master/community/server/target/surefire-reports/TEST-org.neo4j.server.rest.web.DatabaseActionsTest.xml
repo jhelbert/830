@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.neo4j.server.rest.web.DatabaseActionsTest" time="1.07" tests="60" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib"/>
+    <property name="java.vm.version" value="24.71-b01"/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/JustinHelbert/830/830/neo4j-master/community/server"/>
+    <property name="java.runtime.version" value="1.7.0_71-b14"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/endorsed"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/var/folders/hl/_37m6d6x62j61jgzxgz8s8qh0000gq/T/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="classworlds.conf" value="/usr/local/Cellar/maven/3.2.3/libexec/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/JustinHelbert/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.9.5"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/JustinHelbert"/>
+    <property name="user.timezone" value="America/New_York"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="JustinHelbert"/>
+    <property name="java.class.path" value="/usr/local/Cellar/maven/3.2.3/libexec/boot/plexus-classworlds-2.5.1.jar"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean package -P initial-build"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.7.0_71"/>
+    <property name="java.ext.dirs" value="/Users/JustinHelbert/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/local/Cellar/maven/3.2.3/libexec"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase name="shouldBeAbleToGetFullPathsIfSpecified" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.035"/>
+  <testcase name="shouldBeAbleToRetrieveASinglePropertyFromARelationship" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.007"/>
+  <testcase name="shouldBeAbleToGetShortestPaths" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.032"/>
+  <testcase name="shouldNotIndexNodeWhenAnotherNodeAlreadyIndexed" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.036"/>
+  <testcase name="shouldBeAbleToGetPathsUsingDijkstraWithDefaults" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.043"/>
+  <testcase name="getNodesWithLabelAndSeveralPropertiesShouldFail" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.005"/>
+  <testcase name="getNodesWithLabel" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.019"/>
+  <testcase name="shouldBeAbleToTraverseWithDefaultParameters" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.035"/>
+  <testcase name="shouldOverwriteExistingProperties" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.012"/>
+  <testcase name="shouldBeAbleToSetRelationshipProperties" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.011"/>
+  <testcase name="shouldStoreRelationshipsBetweenTwoExistingNodes" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.01"/>
+  <testcase name="shouldBeAbleToIndexNode" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.011"/>
+  <testcase name="shouldHandleNoFoundPathsCorrectly" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.025"/>
+  <testcase name="shouldDropPropertyUniquenessConstraint" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.044"/>
+  <testcase name="shouldReturnTrueIfNodePropertyRemoved" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.01"/>
+  <testcase name="shouldRemoveLabelFromNode" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.009"/>
+  <testcase name="shouldBeAbleToSetRelationshipProperty" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.01"/>
+  <testcase name="shouldCreateSchemaIndex" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.016"/>
+  <testcase name="nodeInDatabaseShouldBeRetrievable" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.008"/>
+  <testcase name="shouldBeAbleToFulltextIndex" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.053"/>
+  <testcase name="shouldBeAbleToDeleteARelationship" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.006"/>
+  <testcase name="shouldRemoveNodeWithNoRelationsFromDBOnDelete" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.005"/>
+  <testcase name="shouldBeAbleToRemoveNodeFromIndexWithoutKeyValue" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.018"/>
+  <testcase name="shouldStoreSuppliedPropertiesWhenCreatingRelationship" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.007"/>
+  <testcase name="shouldBeAbleToTraverseWithMaxDepthAndPruneEvaluatorCombined" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.208"/>
+  <testcase name="shouldGetExtendedNodeRepresentationsWhenGettingFromIndex" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.011"/>
+  <testcase name="shouldAddLabelToNode" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.007"/>
+  <testcase name="shouldAllowCreateRelationshipWithSameStartAsEndNode" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.006"/>
+  <testcase name="shouldBeAbleToSetPropertyOnNode" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.006"/>
+  <testcase name="shouldBeAbleToRetrieveARelationship" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.005"/>
+  <testcase name="shouldBeAbleToTraverseDepthTwo" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.022"/>
+  <testcase name="shouldBeAbleToGetRelationshipsIfSpecified" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.021"/>
+  <testcase name="shouldBeAbleToUseCustomReturnFilter" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.028"/>
+  <testcase name="shouldReturnFalseIfNodePropertyNotRemoved" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.007"/>
+  <testcase name="shouldBeAbleToStorePropertiesInAnExistingNode" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.006"/>
+  <testcase name="shouldRemoveRelationshipProperty" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.007"/>
+  <testcase name="shouldListExistingLabelsOnNode" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.009"/>
+  <testcase name="shouldNotIndexRelationshipWhenAnotherRelationshipAlreadyIndexed" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.014"/>
+  <testcase name="shouldBeAbleToTraverseEverything" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.03"/>
+  <testcase name="shouldIndexNodeOnlyOnce" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.009"/>
+  <testcase name="shouldBeAbleToGetPropertyOnNode" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.008"/>
+  <testcase name="shouldNotGetAnyRelationshipsWhenRetrievingFromNodeWithoutRelationships" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.006"/>
+  <testcase name="shouldBeAbleToRemoveNodeProperties" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.009"/>
+  <testcase name="shouldCreatePropertyUniquenessConstraint" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.012"/>
+  <testcase name="settingAnEmptyArrayShouldWorkIfOriginalEntityHasAnEmptyArrayAsWell" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.009"/>
+  <testcase name="shouldBeAbleToRetrieveRelationshipsFromNode" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.014"/>
+  <testcase name="createdNodeShouldBeInDatabase" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.005"/>
+  <testcase name="shouldGetSchemaIndexes" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.008"/>
+  <testcase name="shouldBeAbleToGetPropertiesOnNode" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.006"/>
+  <testcase name="shouldDropSchemaIndex" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.01"/>
+  <testcase name="shouldBeAbleToGetPathsUsingDijkstra" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.024"/>
+  <testcase name="shouldIndexRelationshipOnlyOnce" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.011"/>
+  <testcase name="shouldBeAbleToRemoveNodeFromIndex" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.014"/>
+  <testcase name="shouldBeAbleToRemoveNodeProperty" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.008"/>
+  <testcase name="shouldNotCreateRelationshipBetweenNonExistentNodes" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.006"/>
+  <testcase name="shouldGetPropertyUniquenessConstraint" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.011"/>
+  <testcase name="shouldFailOnTryingToStoreMixedArraysAsAProperty" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.007"/>
+  <testcase name="shouldBeAbleToGetPathsIfSpecified" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.022"/>
+  <testcase name="shouldBeAbleToGetPropertiesOnRelationship" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.008"/>
+  <testcase name="shouldRemoveRelationProperties" classname="org.neo4j.server.rest.web.DatabaseActionsTest" time="0.009"/>
+</testsuite>

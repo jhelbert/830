@@ -1,0 +1,18 @@
+* *+POST+*  +http://localhost:7474/db/data/transaction+
+* *+Accept:+* +application/json; charset=UTF-8+
+* *+Content-Type:+* +application/json+
+
+[source,javascript]
+----
+{
+  "statements" : [ {
+    "statement" : "CREATE (n {props}) RETURN n",
+    "parameters" : {
+      "props" : {
+        "name" : "My Node"
+      }
+    }
+  } ]
+}
+----
+

@@ -1,0 +1,4 @@
+org/neo4j/examples/server/GetAllDocIT.class
+org/neo4j/examples/server/DepthTwoDocIT.class
+org/neo4j/examples/server/ShortestPathDocIT.class
+org/neo4j/examples/server/AbstractPluginTestBase.class

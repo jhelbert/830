@@ -1,0 +1,15 @@
+* *+POST+*  +http://localhost:7474/db/data/node/11/relationships+
+* *+Accept:+* +application/json; charset=UTF-8+
+* *+Content-Type:+* +application/json+
+
+[source,javascript]
+----
+{
+  "to" : "http://localhost:7474/db/data/node/10",
+  "type" : "LOVES",
+  "data" : {
+    "foo" : "bar"
+  }
+}
+----
+

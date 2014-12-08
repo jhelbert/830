@@ -1,0 +1,60 @@
+[options="header", cols="<1m,<1"]
+|===
+|Status Code |Description 
+|Neo.ClientError.General.ReadOnly |This is a read only database, writing or modifying the database is not allowed. 
+|Neo.ClientError.LegacyIndex.NoSuchIndex |The request (directly or indirectly) referred to a index that does not exist. 
+|Neo.ClientError.Request.Invalid |The client provided an invalid request. 
+|Neo.ClientError.Request.InvalidFormat |The client provided a request that was missing required fields, or had values that are not allowed. 
+|Neo.ClientError.Schema.ConstraintAlreadyExists |Unable to perform operation because it would clash with a pre-existing constraint. 
+|Neo.ClientError.Schema.ConstraintVerificationFailure |Unable to create constraint because data that exists in the database violates it. 
+|Neo.ClientError.Schema.ConstraintViolation |A constraint imposed by the database was violated. 
+|Neo.ClientError.Schema.IllegalTokenName |A token name, such as a label, relationship type or property key, used is not valid. Tokens cannot be empty strings and cannot be null. 
+|Neo.ClientError.Schema.IndexAlreadyExists |Unable to perform operation because it would clash with a pre-existing index. 
+|Neo.ClientError.Schema.IndexBelongsToConstraint |A requested operation can not be performed on the specified index because the index is part of a constraint. If you want to drop the index, for instance, you must drop the constraint. 
+|Neo.ClientError.Schema.LabelLimitReached |The maximum number of labels supported has been reached, no more labels can be created. 
+|Neo.ClientError.Schema.NoSuchConstraint |The request (directly or indirectly) referred to a constraint that does not exist. 
+|Neo.ClientError.Schema.NoSuchIndex |The request (directly or indirectly) referred to an index that does not exist. 
+|Neo.ClientError.Security.AuthenticationFailed |The client provided an incorrect username and/or password. 
+|Neo.ClientError.Security.AuthenticationRateLimit |The client has provided incorrect authentication details too many times in a row. You will be allowed to try again in a few seconds. 
+|Neo.ClientError.Security.AuthorizationFailed |The client provided an invalid authorization token, or does not have privileges to perform the operation requested. 
+|Neo.ClientError.Statement.ArithmeticError |Invalid use of arithmetic, such as dividing by zero. 
+|Neo.ClientError.Statement.ConstraintViolation |A constraint imposed by the statement is violated by the data in the database. 
+|Neo.ClientError.Statement.EntityNotFound |The statement is directly referring to an entity that does not exist. 
+|Neo.ClientError.Statement.InvalidArguments |The statement is attempting to perform operations using invalid arguments 
+|Neo.ClientError.Statement.InvalidSemantics |The statement is syntactically valid, but expresses something that the database cannot do. 
+|Neo.ClientError.Statement.InvalidSyntax |The statement contains invalid or unsupported syntax. 
+|Neo.ClientError.Statement.InvalidType |The statement is attempting to perform operations on values with types that are not supported by the operation. 
+|Neo.ClientError.Statement.NoSuchLabel |The statement is referring to a label that does not exist. 
+|Neo.ClientError.Statement.NoSuchProperty |The statement is referring to a property that does not exist. 
+|Neo.ClientError.Statement.ParameterMissing |The statement is referring to a parameter that was not provided in the request. 
+|Neo.ClientError.Transaction.ConcurrentRequest |There were concurrent requests accessing the same transaction, which is not allowed. 
+|Neo.ClientError.Transaction.EventHandlerThrewException |A transaction event handler threw an exception. The transaction will be rolled back. 
+|Neo.ClientError.Transaction.HookFailed |Transaction hook failure. 
+|Neo.ClientError.Transaction.InvalidType |The transaction is of the wrong type to service the request. For instance, a transaction that has had schema modifications performed in it cannot be used to subsequently perform data operations, and vice versa. 
+|Neo.ClientError.Transaction.MarkedAsFailed |Transaction was marked as both successful and failed. Failure takes precedence and so this transaction was rolled back although it may have looked like it was going to be committed 
+|Neo.ClientError.Transaction.UnknownId |The request referred to a transaction that does not exist. 
+|Neo.ClientError.Transaction.ValidationFailed |Transaction changes did not pass validation checks 
+|Neo.DatabaseError.General.CorruptSchemaRule |A malformed schema rule was encountered. Please contact your support representative. 
+|Neo.DatabaseError.General.FailedIndex |The request (directly or indirectly) referred to an index that is in a failed state. The index needs to be dropped and recreated manually. 
+|Neo.DatabaseError.General.UnknownFailure |An unknown failure occurred. 
+|Neo.DatabaseError.Schema.ConstraintCreationFailure |Creating a requested constraint failed. 
+|Neo.DatabaseError.Schema.ConstraintDropFailure |The database failed to drop a requested constraint. 
+|Neo.DatabaseError.Schema.IndexCreationFailure |Failed to create an index. 
+|Neo.DatabaseError.Schema.IndexDropFailure |The database failed to drop a requested index. 
+|Neo.DatabaseError.Schema.NoSuchLabel |The request accessed a label that did not exist. 
+|Neo.DatabaseError.Schema.NoSuchPropertyKey |The request accessed a property that does not exist. 
+|Neo.DatabaseError.Schema.NoSuchRelationshipType |The request accessed a relationship type that does not exist. 
+|Neo.DatabaseError.Schema.NoSuchSchemaRule |The request referred to a schema rule that does not exist. 
+|Neo.DatabaseError.Statement.ExecutionFailure |The database was unable to execute the statement. 
+|Neo.DatabaseError.Transaction.CouldNotBegin |The database was unable to start the transaction. 
+|Neo.DatabaseError.Transaction.CouldNotCommit |The database was unable to commit the transaction. 
+|Neo.DatabaseError.Transaction.CouldNotRollback |The database was unable to roll back the transaction. 
+|Neo.DatabaseError.Transaction.CouldNotWriteToLog |The database was unable to write transaction to log. 
+|Neo.DatabaseError.Transaction.ReleaseLocksFailed |The transaction was unable to release one or more of its locks. 
+|Neo.TransientError.General.DatabaseUnavailable |The database is not currently available to serve your request, refer to the database logs for more details. Retrying your request at a later time may succeed. 
+|Neo.TransientError.Network.UnknownFailure |An unknown network failure occurred, a retry may resolve the issue. 
+|Neo.TransientError.Schema.ModifiedConcurrently |The database schema was modified while this transaction was running, the transaction should be retried. 
+|Neo.TransientError.Statement.ExternalResourceFailure |The external resource is not available 
+|Neo.TransientError.Transaction.AcquireLockTimeout |The transaction was unable to acquire a lock, for instance due to a timeout or the transaction thread being interrupted. 
+|Neo.TransientError.Transaction.DeadlockDetected |This transaction, and at least one more transaction, has acquired locks in a way that it will wait indefinitely, and the database has aborted it. Retrying this transaction will most likely be successful. 
+|===

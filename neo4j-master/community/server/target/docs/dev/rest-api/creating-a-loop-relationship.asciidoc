@@ -1,0 +1,14 @@
+[[rest-api-creating-a-loop-relationship]]
+=== Creating a loop relationship ===
+
+.Final Graph
+include::includes/creating-a-loop-relationship.graph.asciidoc[]
+
+_Example request_
+
+include::includes/creating-a-loop-relationship.request.asciidoc[]
+
+_Example response_
+
+include::includes/creating-a-loop-relationship.response.asciidoc[]
+

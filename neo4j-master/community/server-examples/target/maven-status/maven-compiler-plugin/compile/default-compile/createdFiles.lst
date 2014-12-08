@@ -1,0 +1,9 @@
+org/neo4j/examples/server/TraversalDefinition.class
+META-INF/services/org.neo4j.kernel.Version
+org/neo4j/examples/server/impl/ComponentVersion.class
+org/neo4j/examples/server/plugins/GetAll.class
+org/neo4j/examples/server/plugins/ShortestPath.class
+org/neo4j/examples/server/Relation.class
+org/neo4j/examples/server/plugins/DepthTwo.class
+org/neo4j/examples/server/CreateSimpleGraph.class
+org/neo4j/examples/server/unmanaged/HelloWorldResource.class

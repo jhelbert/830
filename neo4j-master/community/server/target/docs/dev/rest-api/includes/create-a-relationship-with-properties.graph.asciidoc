@@ -1,0 +1,19 @@
+["dot", "Final-Graph-Create-a-relationship-with-properties.svg", "neoviz", ""]
+----
+  N10 [
+    label = "{Node\[10\]name = \'Sara\'\l}"
+  ]
+  N11 [
+    label = "{Node\[11\]name = \'Joe\'\l}"
+  ]
+  N11 -> N10 [
+    color = "#2e3436"
+    fontcolor = "#2e3436"
+    label = "knows\n"
+  ]
+  N11 -> N10 [
+    color = "#4e9a06"
+    fontcolor = "#4e9a06"
+    label = "LOVES\nfoo = \'bar\'\l"
+  ]
+----

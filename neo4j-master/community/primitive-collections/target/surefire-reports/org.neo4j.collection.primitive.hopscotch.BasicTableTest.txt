@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.neo4j.collection.primitive.hopscotch.BasicTableTest
+-------------------------------------------------------------------------------
+Tests run: 35, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0.052 sec - in org.neo4j.collection.primitive.hopscotch.BasicTableTest

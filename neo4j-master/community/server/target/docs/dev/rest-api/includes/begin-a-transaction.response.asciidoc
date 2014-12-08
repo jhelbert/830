@@ -1,0 +1,23 @@
+* *+201:+* +Created+
+* *+Content-Type:+* +application/json+
+* *+Location:+* +http://localhost:7474/db/data/transaction/7+
+
+[source,javascript]
+----
+{
+  "commit" : "http://localhost:7474/db/data/transaction/7/commit",
+  "results" : [ {
+    "columns" : [ "n" ],
+    "data" : [ {
+      "row" : [ {
+        "name" : "My Node"
+      } ]
+    } ]
+  } ],
+  "transaction" : {
+    "expires" : "Sun, 07 Dec 2014 18:54:18 +0000"
+  },
+  "errors" : [ ]
+}
+----
+
