@@ -9,7 +9,7 @@ def endTransaction():
   print 'BEGIN'
 
 nodeList = Set([])
-with open("data/com-amazon.ungraph10klines.txt","r") as data:
+with open("data/com-amazon.ungraph1klines.txt","r") as data:
 #with open("small.txt","r") as data:
   for line in data:
     if '#' not in line:
@@ -26,7 +26,7 @@ for node in nodeList:
     endTransaction()
   print 'CREATE (n {id:'+node+'});'
 
-with open("data/com-amazon.ungraph10klines.txt","r") as data:
+with open("data/com-amazon.ungraph1klines.txt","r") as data:
 #with open("small.txt","r") as data:
   for line in data:
     if '#' not in line:
