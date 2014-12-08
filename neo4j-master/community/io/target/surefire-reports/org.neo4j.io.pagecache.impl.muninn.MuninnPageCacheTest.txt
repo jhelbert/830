@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.neo4j.io.pagecache.impl.muninn.MuninnPageCacheTest
--------------------------------------------------------------------------------
-Tests run: 108, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 95.934 sec - in org.neo4j.io.pagecache.impl.muninn.MuninnPageCacheTest

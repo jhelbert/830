@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project name="maven-antrun-" default="main"  >
-<target name="main">
-  <java classname="org.neo4j.server.rest.transactional.error.ErrorDocumentationGenerator" failonerror="true" classpathref="maven.compile.classpath">
-    <arg value="/Users/JustinHelbert/830/830/neo4j-master/community/server/target/docs/dev/rest-api"/>
-  </java>
-</target>
-</project>

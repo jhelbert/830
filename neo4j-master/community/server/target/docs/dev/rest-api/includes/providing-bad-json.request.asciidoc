@@ -1,9 +1,0 @@
-* *+POST+*  +http://localhost:7474/db/data/node/9/relationships+
-* *+Accept:+* +application/json; charset=UTF-8+
-* *+Content-Type:+* +application/json+
-
-[source,javascript]
-----
-{"to" : "http://localhost:7474/db/data/node/9", "type" : "LOVES", "data" : {"foo" : **BAD JSON HERE*** "bar"}}
-----
-

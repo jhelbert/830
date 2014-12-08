@@ -1,8 +1,0 @@
-* *+200:+* +OK+
-* *+Content-Type:+* +application/json; charset=UTF-8+
-
-[source,javascript]
-----
-[ "Not currently standing on any entity.", "neo4j-sh (?)$ " ]
-----
-

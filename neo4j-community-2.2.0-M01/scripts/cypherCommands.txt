@@ -1,0 +1,11 @@
+BEGIN
+CREATE (n {id:1});
+CREATE (n {id:3});
+CREATE (n {id:2});
+CREATE (n {id:5});
+CREATE (n {id:4});
+MATCH (from {id:1}), (to {id:2}) CREATE from-[:CONNECTED_TO {cost: 1}]->to;
+MATCH (from {id:2}), (to {id:3}) CREATE from-[:CONNECTED_TO {cost: 1}]->to;
+MATCH (from {id:2}), (to {id:4}) CREATE from-[:CONNECTED_TO {cost: 2}]->to;
+MATCH (from {id:4}), (to {id:5}) CREATE from-[:CONNECTED_TO {cost: 3}]->to;
+COMMIT

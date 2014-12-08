@@ -1,9 +1,0 @@
-org/neo4j/csv/reader/ThreadAheadReadableTest.class
-org/neo4j/csv/reader/ExtractorsTest.class
-org/neo4j/csv/reader/ThreadAheadReadableTest$MockedReader.class
-org/neo4j/csv/reader/MultiReadableTest$1.class
-org/neo4j/test/TestDirectory$1.class
-org/neo4j/csv/reader/MultiReadableTest.class
-org/neo4j/csv/reader/BufferedCharSeekerTest.class
-org/neo4j/test/TestDirectory.class
-org/neo4j/csv/reader/ReadablesTest.class
