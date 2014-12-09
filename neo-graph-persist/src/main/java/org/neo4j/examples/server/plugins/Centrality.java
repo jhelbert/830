@@ -88,7 +88,7 @@ public class Centrality extends ServerPlugin
         String s = "";
         try (Transaction tx = graphDb.beginTx())
         {
-                final int n = 8;
+                final int n = IteratorUtil.count(GlobalGraphOperations.at(graphDb).getAllNodes());
                 List<Map<Integer, Integer>> links = new ArrayList<>(n);
                 for (int i = 0; i < n; i++)
                     links.add(new HashMap<Integer, Integer>());
@@ -341,7 +341,7 @@ class FloydWarshall<CostType>
             links.get(((Long)r.getStartNode().getId()).intValue()).put(((Long)r.getEndNode().getId()).intValue(), ((Long) r.getProperty("cost",0)).intValue());
         }
 
-        final int l = links.size();
+        final int l = n;
         final int inf = Integer.MAX_VALUE;
 
         // Initialize path weight and length matrices.
