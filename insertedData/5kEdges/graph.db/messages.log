@@ -1,0 +1,249 @@
+2014-12-08 15:44:42.053+0000 INFO  [org.neo4j]: No locking implementation specified, defaulting to 'community'
+2014-12-08 15:44:42.252+0000 INFO  [org.neo4j]: --- INITIALIZED diagnostics START ---
+2014-12-08 15:44:42.255+0000 INFO  [org.neo4j]: Neo4j Kernel properties:
+    read_only=false
+    node_auto_indexing=true
+    store_dir=../data/graph.db
+    node_keys_indexable=id
+    ephemeral=false
+2014-12-08 15:44:42.263+0000 INFO  [org.neo4j]: Diagnostics providers:
+    org.neo4j.kernel.configuration.Config
+    org.neo4j.kernel.info.DiagnosticsManager
+    SYSTEM_MEMORY
+    JAVA_MEMORY
+    OPERATING_SYSTEM
+    JAVA_VIRTUAL_MACHINE
+    CLASSPATH
+    LIBRARY_PATH
+    SYSTEM_PROPERTIES
+    NETWORK
+2014-12-08 15:44:42.264+0000 INFO  [org.neo4j]: System memory information:
+    Total Physical memory: 4.00 GB
+    Free Physical memory: 215.11 MB
+    Committed virtual memory: 3.60 GB
+    Total swap space: 3.00 GB
+    Free swap space: 1.48 GB
+2014-12-08 15:44:42.273+0000 INFO  [org.neo4j]: JVM memory information:
+    Free  memory: 52.43 MB
+    Total memory: 61.50 MB
+    Max   memory: 910.50 MB
+    Garbage Collector: PS Scavenge: [PS Eden Space, PS Survivor Space]
+    Garbage Collector: PS MarkSweep: [PS Eden Space, PS Survivor Space, PS Old Gen, PS Perm Gen]
+    Memory Pool: Code Cache (Non-heap memory): committed=2.44 MB, used=575.25 kB, max=48.00 MB, threshold=0.00 B
+    Memory Pool: PS Eden Space (Heap memory): committed=16.50 MB, used=4.12 MB, max=336.50 MB, threshold=?
+    Memory Pool: PS Survivor Space (Heap memory): committed=2.50 MB, used=2.49 MB, max=2.50 MB, threshold=?
+    Memory Pool: PS Old Gen (Heap memory): committed=42.50 MB, used=2.77 MB, max=682.50 MB, threshold=0.00 B
+    Memory Pool: PS Perm Gen (Non-heap memory): committed=21.00 MB, used=6.93 MB, max=82.00 MB, threshold=0.00 B
+2014-12-08 15:44:42.288+0000 INFO  [org.neo4j]: Operating system information:
+    Operating System: Mac OS X; version: 10.10; arch: x86_64; cpus: 4
+    Max number of file descriptors: 10240
+    Number of open file descriptors: 32
+    Process id: 55696@Andress-MacBook-Air.local
+    Byte order: LITTLE_ENDIAN
+    Local timezone: America/New_York
+2014-12-08 15:44:42.787+0000 INFO  [org.neo4j]: JVM information:
+    VM Name: Java HotSpot(TM) 64-Bit Server VM
+    VM Vendor: Oracle Corporation
+    VM Version: 24.51-b03
+    JIT compiler: HotSpot 64-Bit Tiered Compilers
+    VM Arguments: [-Dapp.name=neo4j-shell, -Dapp.pid=55696, -Dapp.repo=/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib, -Dbasedir=/Users/andreshasfura/830/neo4j-community-2.2.0-M01, -Dfile.encoding=UTF-8]
+2014-12-08 15:44:42.788+0000 INFO  [org.neo4j]: Java classpath:
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-kernel-2.2.0-M01.jar
+     [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/ext/zipfs.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/classes
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jce.jar
+     [loader.1] file:/System/Library/Java/Extensions/MRJToolkit.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-cypher-compiler-2.2-2.2.0-M01.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/sunrsasign.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/lucene-core-3.6.2.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-graph-matching-2.2.0-M01.jar
+     [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-cypher-compiler-2.0-2.0.4.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/server-api-2.2.0-M01.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-csv-2.2.0-M01.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/parboiled-core-1.1.6.jar
+     [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/ext/sunec.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-cypher-compiler-1.9-2.0.4.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/org.apache.servicemix.bundles.jline-0.9.94_1.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/resources.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-consistency-check-2.2.0-M01.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-primitive-collections-2.2.0-M01.jar
+     [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/ext/dnsns.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-jmx-2.2.0-M01.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/parboiled-scala_2.10-1.1.6.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-cypher-compiler-2.1-2.1.6.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-graph-algo-2.2.0-M01.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/rt.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/concurrentlinkedhashmap-lru-1.4.jar
+     [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/ext/localedata.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-shell-2.2.0-M01.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-cypher-2.2.0-M01.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/charsets.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/scala-library-2.10.4.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-import-tool-2.2.0-M01.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jfr.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/opencsv-2.3.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-udc-2.2.0-M01.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-lucene-index-2.2.0-M01.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib/neo4j-io-2.2.0-M01.jar
+     [classpath + loader.0] file:/Users/andreshasfura/830/neo4j-community-2.2.0-M01/scripts/
+     [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jsse.jar
+2014-12-08 15:44:42.791+0000 INFO  [org.neo4j]: Library path:
+    /Users/andreshasfura/ros_catkin_ws/install_isolated/lib
+    /Users/andreshasfura/Library/Java/Extensions
+    /Library/Java/Extensions
+    /Network/Library/Java/Extensions
+    /System/Library/Java/Extensions
+    /usr/lib/java
+    /Users/andreshasfura/830/neo4j-community-2.2.0-M01/scripts
+2014-12-08 15:44:42.791+0000 INFO  [org.neo4j]: System.properties:
+    sun.boot.library.path = /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib
+    gopherProxySet = false
+    path.separator = :
+    file.encoding.pkg = sun.io
+    user.country = US
+    sun.java.launcher = SUN_STANDARD
+    sun.os.patch.level = unknown
+    user.dir = /Users/andreshasfura/830/neo4j-community-2.2.0-M01/scripts
+    basedir = /Users/andreshasfura/830/neo4j-community-2.2.0-M01
+    app.name = neo4j-shell
+    sun.jnu.encoding = UTF-8
+    app.repo = /Users/andreshasfura/830/neo4j-community-2.2.0-M01/lib
+    sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+    http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+    user.home = /Users/andreshasfura
+    user.timezone = America/New_York
+    file.encoding = UTF-8
+    user.name = andreshasfura
+    sun.java.command = org.neo4j.shell.StartClient -config ../conf/neo4j.properties -path ../data/graph.db
+    sun.arch.data.model = 64
+    user.language = en
+    awt.toolkit = sun.lwawt.macosx.LWCToolkit
+    file.separator = /
+    sun.io.unicode.encoding = UnicodeBig
+    sun.cpu.endian = little
+    socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16
+    app.pid = 55696
+    ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+    sun.cpu.isalist = 
+2014-12-08 15:44:42.793+0000 INFO  [org.neo4j]: Network information:
+    Interface awdl0:
+        address: fe80:0:0:0:7856:a6ff:fe62:f98f%7
+    Interface en0:
+        address: fe80:0:0:0:bae8:56ff:fe11:1336%4
+        address: 18.189.115.18
+    Interface lo0:
+        address: fe80:0:0:0:0:0:0:1%1
+        address: 0:0:0:0:0:0:0:1
+        address: 127.0.0.1
+2014-12-08 15:44:42.798+0000 INFO  [org.neo4j]: --- INITIALIZED diagnostics END ---
+2014-12-08 15:44:43.178+0000 INFO  [org.neo4j]: Creating new db @ ../data/graph.db/neostore
+2014-12-08 15:44:43.588+0000 INFO  [org.neo4j]: Opened logical log [../data/graph.db/neostore.transaction.db.0] version=0, lastTxId=1 (clean)
+2014-12-08 15:44:43.624+0000 INFO  [org.neo4j]: No lucene scan store index found, this might just be first use. Preparing to rebuild.
+2014-12-08 15:44:43.669+0000 INFO  [org.neo4j]: No lucene scan store index found, this might just be first use. Preparing to rebuild.
+2014-12-08 15:44:43.791+0000 INFO  [org.neo4j]: Rebuilding lucene scan store, this may take a while
+2014-12-08 15:44:43.793+0000 INFO  [org.neo4j]: Lucene scan store rebuilt (roughly -1 nodes)
+2014-12-08 15:44:43.800+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:Versions START ---
+2014-12-08 15:44:43.800+0000 INFO  [org.neo4j]: Graph Database: org.neo4j.kernel.EmbeddedGraphDatabase StoreId{creationTime=1418053483174, randomId=9006416365178879838, storeVersion=14687556271633926, upgradeTime=1418053483174, upgradeId=9006416365178879838}
+2014-12-08 15:44:43.800+0000 INFO  [org.neo4j]: Kernel version: Neo4j - Import Command Line Tool (neo4j-import-tool), version: 2.2.0-M01
+2014-12-08 15:44:43.801+0000 INFO  [org.neo4j]: Neo4j component versions:
+2014-12-08 15:44:43.808+0000 INFO  [org.neo4j]:   Neo4j - Lucene Index (neo4j-lucene-index), version: 2.2.0-M01; revision: 2.2.0-M01:master:480/ecbd09d4165d6625a7f6fc149e0c84bd4a52faa4
+2014-12-08 15:44:43.808+0000 INFO  [org.neo4j]:   Neo4j - JMX support (neo4j-jmx), version: 2.2.0-M01; revision: 2.2.0-M01:master:480/ecbd09d4165d6625a7f6fc149e0c84bd4a52faa4
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   Neo4j - Graph Matching (neo4j-graph-matching), version: 2.2.0-M01; revision: 2.2.0-M01:master:480/ecbd09d4165d6625a7f6fc149e0c84bd4a52faa4
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   Neo4j - Cypher Compiler 2.1 (neo4j-cypher-compiler-2.1), version: 2.1.6; revision: 2.1.6:2.1-maint:605/0d7f25fc608f15c54ec1a01f4ba4564ebfb1071a
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   Neo4j - Server API (server-api), version: 2.2.0-M01; revision: 2.2.0-M01:master:480/ecbd09d4165d6625a7f6fc149e0c84bd4a52faa4
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   Neo4j - Import Command Line Tool (neo4j-import-tool), version: 2.2.0-M01; revision: 2.2.0-M01:master:480/ecbd09d4165d6625a7f6fc149e0c84bd4a52faa4
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   Neo4j - Cypher (neo4j-cypher), version: 2.2.0-M01; revision: 2.2.0-M01:master:480/ecbd09d4165d6625a7f6fc149e0c84bd4a52faa4
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   Neo4j - Graph Algorithms (neo4j-graph-algo), version: 2.2.0-M01; revision: 2.2.0-M01:master:480/ecbd09d4165d6625a7f6fc149e0c84bd4a52faa4
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   Neo4j - Cypher Compiler 2.2 (neo4j-cypher-compiler-2.2), version: 2.2.0-M01; revision: 2.2.0-M01:master:480/ecbd09d4165d6625a7f6fc149e0c84bd4a52faa4
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   Neo4j - Cypher Compiler 2.0 (neo4j-cypher-compiler-2.0), version: 2.0.4; revision: 2.0.4:2.0-maint:130/4a7d10bc274a5d26a180bbe9df25100e8a694748
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   Neo4j - Consistency Checker (neo4j-consistency-check), version: 2.2.0-M01; revision: 2.2.0-M01:master:480/ecbd09d4165d6625a7f6fc149e0c84bd4a52faa4
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   Neo4j - Generic shell (neo4j-shell), version: 2.2.0-M01; revision: 2.2.0-M01:master:480/ecbd09d4165d6625a7f6fc149e0c84bd4a52faa4
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   Neo4j - Cypher Compiler 1.9 (neo4j-cypher-compiler-1.9), version: 2.0.4; revision: 2.0.4:2.0-maint:130/4a7d10bc274a5d26a180bbe9df25100e8a694748
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]:   neo4j-udc, version: 2.2.0-M01; revision: 2.2.0-M01:master:480/ecbd09d4165d6625a7f6fc149e0c84bd4a52faa4
+2014-12-08 15:44:43.809+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:Versions END ---
+2014-12-08 15:44:43.812+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_VERSIONS START ---
+2014-12-08 15:44:43.812+0000 INFO  [org.neo4j]: Store versions:
+    Store versions:
+      NeoStore v0.A.4
+      SchemaStore v0.A.4
+      NodeStore v0.A.4
+      RelationshipStore v0.A.4
+      RelationshipTypeStore v0.A.4
+      LabelTokenStore v0.A.4
+      PropertyStore v0.A.4
+      PropertyIndexStore v0.A.4
+      StringPropertyStore v0.A.4
+      ArrayPropertyStore v0.A.4
+      RelationshipGroupStore v0.A.4
+2014-12-08 15:44:43.813+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_VERSIONS END ---
+2014-12-08 15:44:43.813+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_ID_USAGE START ---
+2014-12-08 15:44:43.813+0000 INFO  [org.neo4j]: Id usage:
+    Id usage:
+      SchemaStore: used=1 high=0
+      NodeStore: used=0 high=-1
+      RelationshipStore: used=0 high=-1
+      RelationshipTypeStore: used=0 high=-1
+      LabelTokenStore: used=0 high=-1
+      PropertyStore: used=0 high=-1
+      PropertyIndexStore: used=0 high=-1
+      StringPropertyStore: used=1 high=0
+      ArrayPropertyStore: used=1 high=0
+      RelationshipGroupStore: used=1 high=0
+2014-12-08 15:44:43.814+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_ID_USAGE END ---
+2014-12-08 15:44:43.814+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles START ---
+2014-12-08 15:44:43.814+0000 INFO  [org.neo4j]: Disk space on partition (Total / Free / Free %): 120108089344 / 3262648320 / 2
+Storage files: (filename : modification date - size)
+      index:
+      - Total: 2014-12-08T10:44:43-0500 - 0.00 B
+      lock: 2014-12-08T10:44:43-0500 - 0.00 B
+      messages.log: 2014-12-08T10:44:43-0500 - 14.17 kB
+      neostore: 2014-12-08T10:44:43-0500 - 81.00 B
+      neostore.counts.db.alpha: 2014-12-08T10:44:43-0500 - 8.00 kB
+      neostore.counts.db.beta: 2014-12-08T10:44:43-0500 - 8.00 kB
+      neostore.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.labeltokenstore.db: 2014-12-08T10:44:43-0500 - 0.00 B
+      neostore.labeltokenstore.db.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.labeltokenstore.db.names: 2014-12-08T10:44:43-0500 - 38.00 B
+      neostore.labeltokenstore.db.names.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.nodestore.db: 2014-12-08T10:44:43-0500 - 0.00 B
+      neostore.nodestore.db.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.nodestore.db.labels: 2014-12-08T10:44:43-0500 - 68.00 B
+      neostore.nodestore.db.labels.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.propertystore.db: 2014-12-08T10:44:43-0500 - 0.00 B
+      neostore.propertystore.db.arrays: 2014-12-08T10:44:43-0500 - 128.00 B
+      neostore.propertystore.db.arrays.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.propertystore.db.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.propertystore.db.index: 2014-12-08T10:44:43-0500 - 0.00 B
+      neostore.propertystore.db.index.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.propertystore.db.index.keys: 2014-12-08T10:44:43-0500 - 38.00 B
+      neostore.propertystore.db.index.keys.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.propertystore.db.strings: 2014-12-08T10:44:43-0500 - 128.00 B
+      neostore.propertystore.db.strings.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.relationshipgroupstore.db: 2014-12-08T10:44:43-0500 - 25.00 B
+      neostore.relationshipgroupstore.db.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.relationshipstore.db: 2014-12-08T10:44:43-0500 - 0.00 B
+      neostore.relationshipstore.db.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.relationshiptypestore.db: 2014-12-08T10:44:43-0500 - 0.00 B
+      neostore.relationshiptypestore.db.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.relationshiptypestore.db.names: 2014-12-08T10:44:43-0500 - 38.00 B
+      neostore.relationshiptypestore.db.names.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.schemastore.db: 2014-12-08T10:44:43-0500 - 64.00 B
+      neostore.schemastore.db.id: 2014-12-08T10:44:43-0500 - 9.00 B
+      neostore.transaction.db.0: 2014-12-08T10:44:43-0500 - 16.00 B
+      schema:
+        label:
+          lucene:
+            write.lock: 2014-12-08T10:44:43-0500 - 0.00 B
+          - Total: 2014-12-08T10:44:43-0500 - 0.00 B
+        - Total: 2014-12-08T10:44:43-0500 - 0.00 B
+      - Total: 2014-12-08T10:44:43-0500 - 0.00 B
+      store_lock: 2014-12-08T10:44:43-0500 - 0.00 B
+2014-12-08 15:44:43.825+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles END ---
+2014-12-08 15:44:43.886+0000 INFO  [org.neo4j]: Database is now ready
+2014-12-08 15:50:55.374+0000 INFO  [org.neo4j]: Shutdown started
+2014-12-08 15:50:55.377+0000 INFO  [org.neo4j]: Database is now unavailable
+2014-12-08 15:50:55.792+0000 INFO  [org.neo4j]: NeoStore closed
+2014-12-08 15:50:55.792+0000 INFO  [org.neo4j]: --- STOPPING diagnostics START ---
+2014-12-08 15:50:55.792+0000 INFO  [org.neo4j]: --- STOPPING diagnostics END ---
