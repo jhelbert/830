@@ -330,39 +330,46 @@ class FloydWarshall<CostType>
             }
         }
 
-
-        int edges = IteratorUtil.count(GlobalGraphOperations.at(this.graphDb).getAllNodes());
-        List<Map<Integer, Integer>> links = new ArrayList<>(edges);
-        for (int i = 0; i < edges; i++)
-            links.add(new HashMap<Integer, Integer>());
-        Iterator<Relationship> relationships = GlobalGraphOperations.at( graphDb ).getAllRelationships().iterator();
-        while (relationships.hasNext()) {
-            Relationship r = relationships.next();
-            links.get(((Long)r.getStartNode().getId()).intValue()).put(((Long)r.getEndNode().getId()).intValue(), ((Long) r.getProperty("cost",0)).intValue());
-        }
-
+        boolean CALCULATE_WIDEST_PATHS = true;
         final int l = n;
-        final int inf = Integer.MAX_VALUE;
-
-        // Initialize path weight and length matrices.
         final int[][] ws = new int[l][l];
         final int[][] ls = new int[l][l];
-        for (int[] w : ws) Arrays.fill(w, inf);
-        for (int[] s : ls) Arrays.fill(s, inf);
-        for (int i = 0; i < l; i++) {
-            ws[i][i] = 0;
-            ls[i][i] = 0;
-            for (final int j : links.get(i).keySet()) {
-                ws[i][j] = links.get(i).get(j);
-                ls[i][j] = 1;
-            }
-        }
-
-        // Initialize next vertex matrix.
         final int[][] ns = new int[l][l];
-        for (int i = 0; i < l; i++)
-            for (int j = 0; j < l; j++)
-                ns[i][j] = -1;
+        final int inf = Integer.MAX_VALUE;
+
+        if (CALCULATE_WIDEST_PATHS) {
+            int edges = IteratorUtil.count(GlobalGraphOperations.at(this.graphDb).getAllNodes());
+            List<Map<Integer, Integer>> links = new ArrayList<>(edges);
+            for (int i = 0; i < edges; i++)
+                links.add(new HashMap<Integer, Integer>());
+            Iterator<Relationship> relationships = GlobalGraphOperations.at( graphDb ).getAllRelationships().iterator();
+            while (relationships.hasNext()) {
+                Relationship r = relationships.next();
+                links.get(((Long)r.getStartNode().getId()).intValue()).put(((Long)r.getEndNode().getId()).intValue(), ((Long) r.getProperty("cost",0)).intValue());
+            }
+
+
+
+
+            // Initialize path weight and length matrices.
+
+            for (int[] w : ws) Arrays.fill(w, inf);
+            for (int[] s : ls) Arrays.fill(s, inf);
+            for (int i = 0; i < l; i++) {
+                ws[i][i] = 0;
+                ls[i][i] = 0;
+                for (final int j : links.get(i).keySet()) {
+                    ws[i][j] = links.get(i).get(j);
+                    ls[i][j] = 1;
+                }
+            }
+
+            // Initialize next vertex matrix.
+
+            for (int i = 0; i < l; i++)
+                for (int j = 0; j < l; j++)
+                    ns[i][j] = -1;
+        }
 
         // Do it!
         for ( int v = 0; v < n; ++v )
@@ -381,19 +388,23 @@ class FloydWarshall<CostType>
 
 
                     //minimax
-
-                    if (ws[i][v] != inf && ws[v][j] != inf) {
-                        final int w = Math.max(ws[i][v], ws[v][j]);
-                        final int ll = ls[i][v] + ls[v][j];
-                        if (w < ws[i][j] || (w == ws[i][j] && l < ls[i][j])) {
-                            ws[i][j] = w;
-                            ls[i][j] = ll;
-                            ns[i][j] = v;
+                    if (CALCULATE_WIDEST_PATHS) {
+                        if (ws[i][v] != inf && ws[v][j] != inf) {
+                            final int w = Math.max(ws[i][v], ws[v][j]);
+                            final int ll = ls[i][v] + ls[v][j];
+                            if (w < ws[i][j] || (w == ws[i][j] && l < ls[i][j])) {
+                                ws[i][j] = w;
+                                ls[i][j] = ll;
+                                ns[i][j] = v;
+                            }
                         }
                     }
                 }
             }
         }
+
+        if (CALCULATE_WIDEST_PATHS) {
+
 
         final class PathExtractor {
             private void extract(final List<Integer> path, int i, int j) {
@@ -423,6 +434,7 @@ class FloydWarshall<CostType>
                         ps[i][j].add(j);
                     }
                 }
+            }
 
         // TODO: detect negative cycles?
     }
