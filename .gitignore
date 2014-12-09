@@ -1,3 +1,4 @@
 neo-graph-persist/target/
 *.swp
 neo4j-enterprise-2.1.5/plugins
+neo4j-community-2.2.0-M01/
