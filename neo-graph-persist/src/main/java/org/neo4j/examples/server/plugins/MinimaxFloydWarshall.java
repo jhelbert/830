@@ -1,4 +1,26 @@
+/**
+ * Licensed to Neo Technology under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Neo Technology licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+package org.neo4j.examples.server.plugins;
 import java.util.*;
+
+
+
 
 class MinimaxFloydWarshall {
     protected final List<Map<Integer, Integer>> links;
@@ -10,69 +32,7 @@ class MinimaxFloydWarshall {
     /**
      * Finds all-pairs-shortest-paths in O(V^3) using Floyd-Warshall algorithm.
      */
-    public List<Integer>[][] findAllPairsShortestPaths() {
-        final int n = links.size();
-        final int inf = Integer.MAX_VALUE;
 
-        // Initialize distance matrix.
-        final int[][] ds = new int[n][n];
-        for (int[] d : ds) Arrays.fill(d, inf);
-        for (int i = 0; i < n; i++) {
-        	ds[i][i] = 0;
-            for (final int j : links.get(i).keySet())
-                ds[i][j] = links.get(i).get(j);
-        }
-
-        // Initialize next vertex matrix.
-        final int[][] ns = new int[n][n];
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                ns[i][j] = -1;
-
-        // Here goes the magic!
-        for (int k = 0; k < n; k++)
-            for (int i = 0; i < n; i++)
-                for (int j = 0; j < n; j++)
-                    if (ds[i][k] != inf && ds[k][j] != inf) {
-                        final int d = ds[i][k] + ds[k][j];
-                        if (d < ds[i][j]) {
-                            ds[i][j] = d;
-                            ns[i][j] = k;
-                        }
-                    }
-
-        // Helper class to carve out paths from the next vertex matrix.
-        final class PathExtractor {
-            private void extract(final List<Integer> path, int i, int j) {
-                if (ds[i][j] == inf) return;
-                final int k = ns[i][j];
-                if (k != -1) {
-                    extract(path, i, k);
-                    path.add(k);
-                    extract(path, k, j);
-                }
-            }
-        }
-        final PathExtractor pathExtractor = new PathExtractor();
-
-        // Extract paths.
-        @SuppressWarnings("unchecked")
-        final List<Integer>[][] ps = new List[n][n];
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                if (ds[i][j] == inf)
-                    ps[i][j] = null;
-                else {
-                    ps[i][j] = new ArrayList<>();
-                    ps[i][j].add(i);
-                    if (i != j) {
-                        pathExtractor.extract(ps[i][j], i, j);
-                        ps[i][j].add(j);
-                    }
-                }
-
-        return ps;
-    }
 
     /**
      * Finds all-pairs minimax paths using Floyd-Warshall.

@@ -394,36 +394,6 @@ class FloydWarshall<CostType>
                 }
             }
         }
-
-        final class PathExtractor {
-            private void extract(final List<Integer> path, int i, int j) {
-                if (ws[i][j] == inf) return;
-                final int k = ns[i][j];
-                if (k != -1) {
-                    extract(path, i, k);
-                    path.add(k);
-                    extract(path, k, j);
-                }
-            }
-        }
-        final PathExtractor pathExtractor = new PathExtractor();
-
-        // Extract paths.
-        @SuppressWarnings("unchecked")
-        final List<Integer>[][] ps = new List[n][n];
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                if (ws[i][j] == inf)
-                    ps[i][j] = null;
-                else {
-                    ps[i][j] = new ArrayList<>();
-                    ps[i][j].add(i);
-                    if (i != j) {
-                        pathExtractor.extract(ps[i][j], i, j);
-                        ps[i][j].add(j);
-                    }
-                }
-
         // TODO: detect negative cycles?
     }
 
